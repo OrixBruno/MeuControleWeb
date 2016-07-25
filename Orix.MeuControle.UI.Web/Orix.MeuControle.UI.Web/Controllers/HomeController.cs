@@ -6,18 +6,10 @@ using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Controllers
 {
-    public class RelatoriosController : Controller
+    public class HomeController : Controller
     {
-        // GET: Relatorios
+        // GET: Home
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Cadastrar()
-        {
-            return View();
-        }
-        public ActionResult Editar()
         {
             return View();
         }
