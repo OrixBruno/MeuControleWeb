@@ -1,0 +1,37 @@
+﻿
+<script>
+    function Sucesso(response) {
+        
+    }
+
+    function Error(response) {
+        
+    }
+</script>
+
+<h2>Lista de contas</h2>
+
+<div id="divCarregando" class="progresso">
+    <img src="@Url.Content("~/Content/images/carregando.gif")" />
+    <br />
+    Carregando...
+</div>
+
+<div id="divResultadoConsulta">
+</div>
+
+@using (Ajax.BeginForm(
+                                            "ObterDados",
+                                            "Conta",
+                                            new AjaxOptions
+                                            {
+                                                UpdateTargetId = "divResultadoConsulta",
+                                                LoadingElementId = "divCarregando",
+                                                OnSuccess = "Sucesso",
+                                                OnFailure = "Error"
+                                            }
+                                        ))
+{
+    <input type="submit" value="Carregar" class="btn btn-default" />
+}
+
