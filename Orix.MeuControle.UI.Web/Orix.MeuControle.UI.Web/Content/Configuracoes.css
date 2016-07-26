@@ -18,3 +18,16 @@
     height: 90px;
     width: 120px;
 }
+
+.formCadastro > div {
+    padding-left: 35% !important;
+}
+
+.formCadastroTamanho {
+    padding-top: 0% !important;
+    padding: 0% 20% 0% 20%;
+}
+
+.text-align-center {
+    text-align: center;
+}

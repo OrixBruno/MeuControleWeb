@@ -19,7 +19,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
                 Ativa = true,
                 Saldo = 1500
             };
-
+            TempData.Add("FuncaoFormulario", "Atualizar");
             return View(conta);
         }
         public ActionResult Detalhes(Int32 id)
@@ -32,6 +32,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
         }
         public ActionResult Adicionar()
         {
+            TempData.Add("FuncaoFormulario", "Adicionar");
             return View();
         }
         public ActionResult Listar()
@@ -67,13 +68,13 @@ namespace Orix.MeuControle.UI.Web.Controllers
         [HttpPost]
         public ActionResult Adicionar(ContaViewModel dadosTela)
         {
-            return RedirectToAction("Listar");
+            return JavaScript("location.reload(true)");
         }
 
         [HttpPost]
         public ActionResult Editar(ContaViewModel dadosTela)
         {
-            return RedirectToAction("Listar");
+            return JavaScript("window.location = '/Conta/Listar'");
         }
     }
 }
