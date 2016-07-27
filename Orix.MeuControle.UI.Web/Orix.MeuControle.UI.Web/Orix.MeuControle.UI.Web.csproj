@@ -88,6 +88,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\configuracoes.css" />
     <Content Include="Content\images\carregando.gif" />
+    <Content Include="Content\video\Aula_01.mp4" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -117,11 +118,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReceitaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Bases\Lista.cs" />
+    <Compile Include="ViewModels\CategoriaViewModel.cs" />
     <Compile Include="ViewModels\ContaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ReceitaViewModel.cs" />
+    <Compile Include="ViewModels\TipoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -135,6 +141,14 @@
     <Content Include="Views\Conta\Listar.cshtml" />
     <Content Include="Views\Conta\_FormConta.cshtml" />
     <Content Include="Views\Conta\Editar.cshtml" />
+    <Content Include="Views\Conta\_LayoutConta.cshtml" />
+    <Content Include="Views\Shared\_PartialMenu.cshtml" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Shared\_PartialEstilos.cshtml" />
+    <Content Include="Views\Shared\_PartialScripts.cshtml" />
+    <Content Include="Views\Receita\Adicionar.cshtml" />
+    <Content Include="Views\Receita\_FormReceita.cshtml" />
+    <Content Include="Views\Receita\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,95 @@
+﻿@model Orix.MeuControle.UI.Web.ViewModels.ReceitaViewModel
+<div id="divCarregando" class="progresso">
+    <img src="@Url.Content("~/Content/images/carregando.gif")" />
+    <br />
+    Carregando...
+</div>
+
+@using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Receita", new AjaxOptions {
+    LoadingElementId = "divCarregando",
+    HttpMethod = "POST",
+    OnSuccess = "Sucesso",
+    OnFailure = "Error"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ReceitaViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valor)
+                @Html.ValidationMessageFor(model => model.Valor)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataEfetuada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataEfetuada)
+                @Html.ValidationMessageFor(model => model.DataEfetuada)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Repetir, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Repetir)
+                @Html.ValidationMessageFor(model => model.Repetir)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Efetuada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Efetuada)
+                @Html.ValidationMessageFor(model => model.Efetuada)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TipoID)
+                @Html.ValidationMessageFor(model => model.TipoID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoriaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CategoriaID)
+                @Html.ValidationMessageFor(model => model.CategoriaID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContaID)
+                @Html.ValidationMessageFor(model => model.ContaID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function Sucesso(response) {
+        alert("Cadastrado com sucesso");
+        return response;
+    }
+
+    function Error(response) {
+
+    }
+</script>
