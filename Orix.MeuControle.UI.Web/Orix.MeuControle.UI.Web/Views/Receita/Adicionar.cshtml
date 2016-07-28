@@ -1,3 +1,42 @@
 ﻿<h2>Adicionar</h2>
 
 @Html.Partial("_FormReceita")
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            
+        });
+
+        $('#Repetir').click(function () {
+            var checked = $('#Repetir').val();
+
+            if (checked == true) {
+                $('#myModal').modal('show');
+
+                $('#tituloModal').text(function () {
+                    return "Adicionar repetição";
+                });
+            }
+
+            $('.modal-body').html(function () {
+                return $('#conteudo').datepicker({
+                    inline: true,
+                    firstDay: 1,
+                    showOtherMonths: true,
+                    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                });
+            });
+        });
+
+        $('#teste').click(function () {
+            //$(this).css('background', '#aaa');
+            //$(this).toggleClass("red-cell");
+            //$(this).css({ "background-color": "blue" });
+        });
+
+        $('#Valor').click(function () {
+            alert("Digite o valor");
+        });
+    </script>
+}

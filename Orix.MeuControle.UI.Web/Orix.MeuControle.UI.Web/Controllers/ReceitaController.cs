@@ -9,6 +9,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
 {
     public class ReceitaController : Controller
     {
+        #region Listas 
         private List<ContaViewModel> BuscarContas()
         {
             return new List<ContaViewModel>() {
@@ -43,12 +44,12 @@ namespace Orix.MeuControle.UI.Web.Controllers
                 },
                 new CategoriaViewModel()
                 {
-                    ID = 1,
-                    Descricao = "Dispesas"
+                    ID = 2,
+                    Descricao = "Saúde"
                 },
                 new CategoriaViewModel()
                 {
-                    ID = 1,
+                    ID = 3,
                     Descricao = "Casa"
                 },
             };
@@ -60,20 +61,24 @@ namespace Orix.MeuControle.UI.Web.Controllers
                 new TipoViewModel()
                 {
                     ID = 1,
-                    Descricao = ""
+                    Descricao = "Despesa"
                 },
                 new TipoViewModel()
                 {
-                    ID = 1,
-                    Descricao = ""
+                    ID = 2,
+                    Descricao = "Receita"
                 },
                 new TipoViewModel()
                 {
-                    ID = 1,
-                    Descricao = ""
+                    ID = 3,
+                    Descricao = "Transferência"
                 }
             };
         }
+
+        #endregion
+
+        #region GET ---------------------------------------
         public ActionResult Listar()
         {
             return View();
@@ -81,11 +86,24 @@ namespace Orix.MeuControle.UI.Web.Controllers
 
         public ActionResult Adicionar()
         {
+            ViewBag.Contas = BuscarContas();
+            ViewBag.Categorias = BuscarCategorias();
+            ViewBag.Tipos = BuscarTipos();
+
             return View();
         }
         public ActionResult Editar()
         {
             return View();
         }
+        #endregion
+
+        #region POST ------------------------------
+        [HttpPost]
+        public ActionResult Adicionar(ReceitaViewModel dadosTela)
+        {
+            return RedirectToAction("Adicionar");
+        }
+        #endregion
     }
 }

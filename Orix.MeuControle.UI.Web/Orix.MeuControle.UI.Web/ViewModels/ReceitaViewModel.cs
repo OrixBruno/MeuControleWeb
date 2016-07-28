@@ -29,14 +29,17 @@ namespace Orix.MeuControle.UI.Web.ViewModels
 
         [Required]
         [ForeignKey("TipoViewModel")]
+        [Display(Name ="Tipo")]
         public Int32 TipoID { get; set; }
 
         [Required]
         [ForeignKey("CategoriaViewModel")]
+        [Display(Name = "Categoria")]
         public Int32 CategoriaID { get; set; }
 
         [Required]
         [ForeignKey("ContaViewModel")]
+        [Display(Name = "Conta")]
         public Int32 ContaID { get; set; }
 
 

@@ -1,11 +1,25 @@
-﻿@model Orix.MeuControle.UI.Web.ViewModels.ReceitaViewModel
+﻿@model ReceitaViewModel
+<script>
+    function Sucesso(response) {
+        alert("Cadastrado com sucesso");
+        return response;
+    }
+
+    function Error(response) {
+        alert(response);
+    }
+</script>
+
+@Html.Partial("_PartialModal")
+
 <div id="divCarregando" class="progresso">
     <img src="@Url.Content("~/Content/images/carregando.gif")" />
     <br />
     Carregando...
 </div>
 
-@using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Receita", new AjaxOptions {
+@using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Receita", new AjaxOptions
+{
     LoadingElementId = "divCarregando",
     HttpMethod = "POST",
     OnSuccess = "Sucesso",
@@ -15,7 +29,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ReceitaViewModel</h4>
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
@@ -53,7 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TipoID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoID)
+                @Html.DropDownListFor(model => model.TipoID, new SelectList((List<TipoViewModel>)ViewBag.Tipos, "ID", "Descricao"), "Selecione...")
                 @Html.ValidationMessageFor(model => model.TipoID)
             </div>
         </div>
@@ -61,7 +74,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoriaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoriaID)
+                @Html.DropDownListFor(model => model.CategoriaID, new SelectList((List<CategoriaViewModel>)ViewBag.Categorias, "ID", "Descricao"), "Selecione...")
                 @Html.ValidationMessageFor(model => model.CategoriaID)
             </div>
         </div>
@@ -69,27 +82,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ContaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ContaID)
+                @Html.DropDownListFor(model => model.ContaID, new SelectList((List<ContaViewModel>)ViewBag.Contas, "ID", "Nome"), "Selecione...")
                 @Html.ValidationMessageFor(model => model.ContaID)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-
-<script>
-    function Sucesso(response) {
-        alert("Cadastrado com sucesso");
-        return response;
-    }
-
-    function Error(response) {
-
-    }
-</script>

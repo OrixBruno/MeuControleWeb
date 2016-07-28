@@ -1,6 +1,45 @@
 ﻿body {
     padding-bottom: 70px;
 }
+.campos-direita{
+     width: 50%;
+     margin: 0 0 0 0;
+}
+.campos-esquerda{
+    width: 50%;
+    margin: 0 0 0 0;
+}
+/*BOTAO HOVER-----------------------------------------*/
+.button-hover {
+    -webkit-transition-duration: 0.4s !important; /* Safari */
+    transition-duration: 0.4s;
+}
+.button-hover :hover{
+    width:auto;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button-hover span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button-hover:hover span {
+  padding-right: 25px;
+}
+.button-hover span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button-hover:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/*BOTAO HOVER-----------------------------------------*/
 
 .progresso {
     display: none;
@@ -36,6 +75,7 @@
     color: aqua;
 }
 
+/*VIDEO CONTAINER-----------------------------------------*/
 .video-container {
     height: 93vh;
     position: relative;
@@ -55,3 +95,4 @@
     transform: translateX(-50%) translateY(-50%);
     z-index: 0;
 }
+/*VIDEO CONTAINER-----------------------------------------*/
