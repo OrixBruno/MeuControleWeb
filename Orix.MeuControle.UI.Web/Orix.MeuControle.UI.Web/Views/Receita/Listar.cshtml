@@ -1,0 +1,62 @@
+﻿@model List<ReceitaViewModel>
+
+<p class="table-margin-10">
+    @Html.ActionLink("Adicionar receita", "Adicionar")
+</p>
+<table class="table table-margin-10">
+    <tr>
+        <th>
+            @Html.DisplayName("Valor")
+        </th>
+        <th>
+            @Html.DisplayName("Data Efetuada")
+        </th>
+        <th>
+            @Html.DisplayName("Repetir")
+        </th>
+        <th>
+            @Html.DisplayName("Efetuada")
+        </th>
+        <th>
+            @Html.DisplayName("Tipo")
+        </th>
+        <th>
+            @Html.DisplayName("Categoria")
+        </th>
+        <th>
+            @Html.DisplayName("Conta")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEfetuada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Repetir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Efetuada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContaID)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.ID }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

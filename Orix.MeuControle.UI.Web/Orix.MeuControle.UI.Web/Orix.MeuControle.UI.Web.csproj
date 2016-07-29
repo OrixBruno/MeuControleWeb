@@ -87,7 +87,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\configuracoes.css" />
+    <Content Include="Content\images\arrows.png" />
     <Content Include="Content\images\carregando.gif" />
+    <Content Include="Content\mapa.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -142,6 +145,18 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\ControleMapas\Views\web.config" />
+    <Content Include="Areas\ControleMapas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Shared\_LayoutMapas.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Financas\Views\web.config" />
+    <Content Include="Areas\Financas\_ViewStart.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\Impressao.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialMapaImprimir.cshtml" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\funcoes.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -155,12 +170,17 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ControleMapas\ControleMapasAreaRegistration.cs" />
+    <Compile Include="Areas\ControleMapas\Controllers\HomeController.cs" />
+    <Compile Include="Areas\ControleMapas\Controllers\MapaController.cs" />
+    <Compile Include="Areas\Financas\FinancasAreaRegistration.cs" />
     <Compile Include="Controllers\ContaController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ReceitaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,7 +198,6 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Conta\Adicionar.cshtml" />
     <Content Include="Views\Conta\_ObterDados.cshtml" />
     <Content Include="Views\Conta\Listar.cshtml" />
@@ -193,6 +212,8 @@
     <Content Include="Views\Receita\_FormReceita.cshtml" />
     <Content Include="Views\Receita\Editar.cshtml" />
     <Content Include="Views\Shared\_PartialModal.cshtml" />
+    <Content Include="Views\Receita\Listar.cshtml" />
+    <Content Include="Views\Principal\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,6 +223,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\ControleMapas\Models\" />
+    <Folder Include="Areas\Financas\Controllers\" />
+    <Folder Include="Areas\Financas\Models\" />
+    <Folder Include="Areas\Financas\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

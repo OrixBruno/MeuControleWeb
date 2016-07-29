@@ -75,13 +75,26 @@ namespace Orix.MeuControle.UI.Web.Controllers
                 }
             };
         }
-
         #endregion
 
         #region GET ---------------------------------------
         public ActionResult Listar()
         {
-            return View();
+            return View(
+                new List<ReceitaViewModel>()
+                {
+                    new ReceitaViewModel()
+                    {
+                        CategoriaID = 1 ,
+                        ContaID = 1,
+                        DataEfetuada = DateTime.Now,
+                        Efetuada = true,
+                        ID = 1, 
+                        Repetir = true,
+                        TipoID = 1,
+                        Valor = 2510.035
+                    }
+                });
         }
 
         public ActionResult Adicionar()
@@ -102,7 +115,12 @@ namespace Orix.MeuControle.UI.Web.Controllers
         [HttpPost]
         public ActionResult Adicionar(ReceitaViewModel dadosTela)
         {
-            return RedirectToAction("Adicionar");
+            return JavaScript("window.location = '/Conta/Listar'");
+        }
+        [HttpDelete]
+        public ActionResult Excluir(Int32 id)
+        {
+            return JavaScript("window.location = '/Conta/Listar'");
         }
         #endregion
     }

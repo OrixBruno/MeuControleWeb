@@ -1,0 +1,11 @@
+﻿body {
+    padding-bottom:70px;
+}
+.tamanho-impressao{
+    margin:0 0 0 -80px;
+    position:static;
+    border:5px solid;
+    width:1300px;
+    height:460px;
+    padding: 8px;
+}

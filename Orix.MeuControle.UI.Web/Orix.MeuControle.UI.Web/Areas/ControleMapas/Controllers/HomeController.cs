@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Orix.MeuControle.UI.Web.Controllers
+namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: ControleMapas/Home
         public ActionResult Index()
         {
             return View();
