@@ -1,0 +1,75 @@
+﻿@model ContaViewModel
+
+<div class="formCadastroTamanho">
+    <h2 class="text-align-center">@TempData["FuncaoFormulario"] conta</h2>
+    <div id="divCarregando" class="progresso">
+        <img src="@Url.Content("~/Content/images/carregando.gif")" />
+        <br />
+        Carregando...
+    </div>
+
+    @using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Conta", new AjaxOptions
+    {
+        LoadingElementId = "divCarregando",
+        HttpMethod = "POST",
+        OnSuccess = "Sucesso",
+        OnFailure = "Error"
+    }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal formCadastro">
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome)
+                    @Html.ValidationMessageFor(model => model.Nome)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Saldo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Saldo, new { type = "number" })
+                    @Html.ValidationMessageFor(model => model.Saldo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ativa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ativa)
+                    @Html.ValidationMessageFor(model => model.Ativa)
+                </div>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @if (this.Url.Action().ToString().Contains("Adicionar"))
+                    {
+                        <input type="reset" value="Limpar" class="btn btn-danger" />
+                    }
+                    <input id="salvar" type="submit" value="Salvar" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    function Sucesso(response) {
+        alert("Cadastrado com sucesso");
+        return response;
+    }
+
+    function Error(response) {
+
+    }
+</script>
+
+@section scriptsForm {
+
+}

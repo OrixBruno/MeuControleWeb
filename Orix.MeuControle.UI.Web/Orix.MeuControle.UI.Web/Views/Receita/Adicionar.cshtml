@@ -1,0 +1,49 @@
+﻿<h2>Adicionar</h2>
+
+@Html.Partial("_FormReceita")
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        $('#Repetir').click(function () {
+            var checked = $('#Repetir').val();
+
+            $('#myModal').modal('show');
+
+            $('#tituloModal').text(function () {
+                return "Adicionar repetição";
+            });
+
+            $('.conteudo').datepicker({
+                inline: true,
+                firstDay: 1,
+                showOtherMonths: true,
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+        });
+
+        $('#teste').click(function () {
+            //$(this).css('background', '#aaa');
+            //$(this).toggleClass("red-cell");
+            //$(this).css({ "background-color": "blue" });
+        });
+
+        $('#Valor').click(function () {
+            alert("Digite o valor");
+        });
+
+        $("#Repetir").hover(function () {
+            $(this).popover({ title: "Selecione", content: "Selecione para vizualizar o calendario", animation: true, trigger:"hover" });
+        });
+    </script>
+}
