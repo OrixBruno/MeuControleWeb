@@ -153,6 +153,7 @@
     <Content Include="Areas\Financas\_ViewStart.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\Impressao.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\_PartialMapaImprimir.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_LayoutImpressao.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
