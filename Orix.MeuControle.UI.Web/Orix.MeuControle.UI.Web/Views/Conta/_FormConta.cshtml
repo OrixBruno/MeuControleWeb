@@ -61,7 +61,12 @@
 </div>
 <script>
     function Sucesso(response) {
-        alert("Cadastrado com sucesso");
+        if (response.status == "Success") {
+            alert("Cadastrado com sucesso");
+        } else {
+            alert("Error");
+        }
+
         return response;
     }
 

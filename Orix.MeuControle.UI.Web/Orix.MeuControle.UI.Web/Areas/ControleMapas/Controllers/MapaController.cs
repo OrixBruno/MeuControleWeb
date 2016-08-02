@@ -13,5 +13,14 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         {
             return View();
         }
+        public ActionResult ConsultarMapa(String letra, String codigo)
+        {
+            var json = new {
+                Letra = "",
+                Codigo = 10
+            };
+
+            return PartialView("_PartialMapaImprimir", json);
+        }
     }
 }
