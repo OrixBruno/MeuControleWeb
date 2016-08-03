@@ -18,7 +18,7 @@
     Carregando...
 </div>
 
-@using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Receita", new AjaxOptions
+@using (Ajax.BeginForm("Adicionar", "Receita", new AjaxOptions
 {
     LoadingElementId = "divCarregando",
     HttpMethod = "POST",

@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastMapper, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMapper.1.2.0\lib\net40\FastMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -149,14 +153,11 @@
     <Content Include="Areas\ControleMapas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Shared\_LayoutMapas.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Financas\Views\web.config" />
-    <Content Include="Areas\Financas\_ViewStart.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\Impressao.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\_PartialMapaImprimir.cshtml" />
-    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Areas\ControleMapas\Views\Surdo\Adicionar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Surdo\Editar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Surdo\_PartialFormSurdo.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\funcoes.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -178,7 +179,7 @@
     <Compile Include="Areas\ControleMapas\ControleMapasAreaRegistration.cs" />
     <Compile Include="Areas\ControleMapas\Controllers\HomeController.cs" />
     <Compile Include="Areas\ControleMapas\Controllers\MapaController.cs" />
-    <Compile Include="Areas\Financas\FinancasAreaRegistration.cs" />
+    <Compile Include="Areas\ControleMapas\Controllers\SurdoController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ReceitaController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="ViewModels\CategoriaViewModel.cs" />
     <Compile Include="ViewModels\ContaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\ReceitaViewModel.cs" />
     <Compile Include="ViewModels\TipoViewModel.cs" />
   </ItemGroup>
@@ -214,6 +216,7 @@
     <Content Include="Views\Shared\_PartialModal.cshtml" />
     <Content Include="Views\Receita\Listar.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialCarregando.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,10 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ControleMapas\Models\" />
-    <Folder Include="Areas\Financas\Controllers\" />
-    <Folder Include="Areas\Financas\Models\" />
-    <Folder Include="Areas\Financas\Views\Shared\" />
+    <Folder Include="Areas\ControleMapas\ViewModels\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
