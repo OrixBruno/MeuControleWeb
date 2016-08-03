@@ -2,7 +2,10 @@
     padding-bottom: 70px;
 }
 
-
+.btn-imprimir{
+    margin-top:10px;
+    margin-left:28px;
+}
 /*IMPRESSAOOOOOOO___________________________________*/
 @media print {
   body * {
@@ -12,7 +15,6 @@
     visibility: visible;
   }
   #printable {
-    position: fixed;
     left: 0;
     top: 0;
   }
