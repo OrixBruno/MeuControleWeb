@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.UI.Web", "Orix.MeuControle.UI.Web\Orix.MeuControle.UI.Web.csproj", "{0E040BCF-5A92-4DDD-967B-FDDA38B1E00C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Regras de Negócios", "Regras de Negócios", "{FFD68C93-3BF6-46E7-BDB7-19DC4DCA3003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentação", "Apresentação", "{9AAF29BB-9F56-433A-A86E-5C390565B616}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Armazenamento de Dados", "Armazenamento de Dados", "{68EBB95A-5633-4D2F-AC34-29EE568726CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acesso a Dados", "Acesso a Dados", "{0F51A287-52E0-4A66-A9DF-C49913A4CCCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.Domain", "Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj", "{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +25,16 @@ Global
 		{0E040BCF-5A92-4DDD-967B-FDDA38B1E00C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E040BCF-5A92-4DDD-967B-FDDA38B1E00C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E040BCF-5A92-4DDD-967B-FDDA38B1E00C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E040BCF-5A92-4DDD-967B-FDDA38B1E00C} = {9AAF29BB-9F56-433A-A86E-5C390565B616}
+		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A} = {68EBB95A-5633-4D2F-AC34-29EE568726CF}
 	EndGlobalSection
 EndGlobal
