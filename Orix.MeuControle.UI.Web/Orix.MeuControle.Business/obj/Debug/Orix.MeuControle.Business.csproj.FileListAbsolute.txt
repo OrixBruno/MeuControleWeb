@@ -1,0 +1,7 @@
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\bin\Debug\Orix.MeuControle.Business.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\bin\Debug\Orix.MeuControle.Business.pdb
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\bin\Debug\Orix.MeuControle.Domain.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\bin\Debug\Orix.MeuControle.Domain.pdb
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\obj\Debug\Orix.MeuControle.Business.csprojResolveAssemblyReference.cache
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\obj\Debug\Orix.MeuControle.Business.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Business\obj\Debug\Orix.MeuControle.Business.pdb

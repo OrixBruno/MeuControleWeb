@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Surdos lista";
+}
+<div id="divCarregando" class="progresso">
+    <img src="@Url.Content("~/Content/images/carregando.gif")" />
+    <br />
+    Carregando...
+</div>
+
+<div class="btn btn-marginTop-15">
+    <input type="submit" name="carregar" id="carregar" value="Carregar" class="btn btn-default" />
+</div>
+
+<div id="conteudoLista">
+
+</div>
+
+@section ChamadaAjax{
+    <script>
+        $('#carregar').click(function () {
+             $.ajax(
+             {
+                 type: 'GET',
+                 url: '/ControleMapas/Surdo/ObterListaSurdos',
+                 dataType: 'html',
+                 cache: false,
+                 async: true,
+                 beforeSend: function () {
+                     $("#divCarregando").show();
+                 },
+                 success: function (data) {
+                     $('#conteudoLista').html(data);
+                 },
+                 complete: function () {
+                     $("#divCarregando").hide();
+                 }
+             });
+        });
+        function Editar(codigo) {
+            $.ajax({
+
+
+
+            });
+        };
+        function Excluir(codigo) {
+            $.ajax({
+                type:'DELETE',
+                url: '/ControleMapas/Surdo/Excluir/' + codigo,
+                async: true,
+                cache: false,
+                beforeSend: function () {
+                    $("#divCarregando").show();
+                },
+                success: function (data) {
+                    if (data.status == 200) {
+                        alert("Excluido com sucesso");
+                    }
+                },
+                complete: function () {
+                    $("#divCarregando").hide();
+                }
+            });
+        };
+        //ATIVAR CARREGAMENTO ASYNC
+        //$(document).ready(function () {
+        //    setInterval(atualizarDefinicao, 30000);
+        //});
+    </script>
+}

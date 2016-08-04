@@ -1,0 +1,40 @@
+﻿@model List<PessoaViewModel>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-1">Codigo</th>
+                <th>Nome</th>
+                <th class="col-md-1">Idade</th>
+                <th>Rua</th>
+                <th class="col-md-1">Numero</th>
+                <th>Bairro</th>
+                <th>Observação</th>
+                <th class="col-md-1">Editar</th>
+                <th class="col-md-1">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var surdo in Model)
+            {
+                <tr>
+                    <td class="col-md-2">@surdo.Codigo</td>
+                    <td>@surdo.Nome</td>
+                    <td class="col-md-1">@surdo.Idade</td>
+                    <td>@surdo.Rua</td>
+                    <td class="col-md-1">@surdo.Numero</td>
+                    <td>@surdo.Bairro</td>
+                    <td>@surdo.Observacao</td>
+                    <td><a onclick="Editar(@surdo.Codigo);"><span class="glyphicon glyphicon-pencil" /></a></td>
+                    <td><a onclick="Excluir(@surdo.Codigo);"><span class="glyphicon glyphicon-trash" /></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">Total de surdos cadastrados: @Model.Count</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

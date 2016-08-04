@@ -2,16 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using FastMapper;
+using Orix.MeuControle.Business;
+using Orix.MeuControle.Domain.Surdos;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
-    public class Genero
+    internal class Genero
     {
         public String Descricao { get; set; }
     }
 
     public class SurdoController : Controller
     {
+        SurdoBusiness _negocios = new SurdoBusiness();
+
         #region METODOS
         private void ListaGeneros()
         {
@@ -45,12 +50,22 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         #endregion
 
         #region GET
-        // GET: ControleMapas/Surdo
+        // GET: ControleMapas/Surdo/Adicionar
         public ActionResult Adicionar()
         {
             ListaGeneros();
-
             return View();
+        }
+        // GET: ControleMapas/Surdo/Lista
+        public ActionResult Lista()
+        {
+            return View();
+        }
+
+        // GET: ControleMapas/Surdo/ObterListaSurdos
+        public ActionResult ObterListaSurdos()
+        {
+            return PartialView("_PartialSurdoLista", TypeAdapter.Adapt<List<PessoaViewModel>>(_negocios.Lista()));
         }
         #endregion
 
@@ -58,12 +73,38 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpPost]
         public ActionResult Adicionar(PessoaViewModel dadoTela)
         {
-            return View();
+            try
+            {
+                _negocios.Cadastrar(TypeAdapter.Adapt<PessoaDomainModel>(dadoTela));
+                ViewBag.Status = "success";
+                ViewBag.Message = "Surdo cadastrado com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         [HttpPost]
-        public ActionResult Editar()
+        public ActionResult Editar(PessoaViewModel dadoTela)
         {
-            return View();
+            try
+            {
+                _negocios.Editar(TypeAdapter.Adapt<PessoaDomainModel>(dadoTela));
+                ViewBag.Message = "Surdo atualizado com sucesso!";
+                ViewBag.Status = "success";
+
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+
+                return PartialView("_PartialAlerta");
+            }
         }
         #endregion
 

@@ -1,0 +1,5 @@
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Domain\bin\Debug\Orix.MeuControle.Domain.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Domain\bin\Debug\Orix.MeuControle.Domain.pdb
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Domain\obj\Debug\Orix.MeuControle.Domain.csprojResolveAssemblyReference.cache
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Domain\obj\Debug\Orix.MeuControle.Domain.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.Domain\obj\Debug\Orix.MeuControle.Domain.pdb

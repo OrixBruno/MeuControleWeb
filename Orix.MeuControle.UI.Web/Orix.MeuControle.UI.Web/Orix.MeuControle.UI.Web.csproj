@@ -158,7 +158,10 @@
     <Content Include="Areas\ControleMapas\Views\Surdo\Adicionar.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Surdo\Editar.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Surdo\_PartialFormSurdo.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Surdo\Lista.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Surdo\_PartialSurdoLista.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\chamadas-ajax.js" />
     <Content Include="Scripts\funcoes.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -217,6 +220,7 @@
     <Content Include="Views\Receita\Listar.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
     <Content Include="Views\Shared\_PartialCarregando.cshtml" />
+    <Content Include="Views\Shared\_PartialAlerta.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -227,6 +231,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ControleMapas\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orix.MeuControle.Business\Orix.MeuControle.Business.csproj">
+      <Project>{a0fee4f7-cf27-491f-a9ca-5ba6da49668b}</Project>
+      <Name>Orix.MeuControle.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj">
+      <Project>{0703cfa7-19aa-4ca0-89a7-aadeb80e4f0a}</Project>
+      <Name>Orix.MeuControle.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

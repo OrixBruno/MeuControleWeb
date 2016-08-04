@@ -2,6 +2,13 @@
     padding-bottom: 70px;
 }
 
+/*BOTOESS---------------------------------*/
+.btn-marginTop-15{
+    margin-top:15px;
+}
+/*BOTOESS---------------------------------*/
+
+
 /*FORM CADASTRO PESSOA-------------------------------*/
 #Genero {
     margin-top: 4%;
@@ -201,6 +208,8 @@
     z-index: 0;
 }
 /*VIDEO CONTAINER-----------------------------------------*/
+
+
 /*DatePicker-----------------------------------------*/
 .ui-datepicker,
 .ui-datepicker table,
@@ -344,3 +353,4 @@
 .ui-datepicker-other-month .ui-state-default {
     color: #565656;
 }
+/*DatePicker-----------------------------------------*/

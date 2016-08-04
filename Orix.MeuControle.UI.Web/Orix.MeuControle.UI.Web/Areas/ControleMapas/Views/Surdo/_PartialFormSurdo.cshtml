@@ -2,9 +2,14 @@
 
 @Html.Partial("_PartialCarregando")
 
+<div id="Mensagem">
+
+</div>
+
 @using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Surdo", new AjaxOptions
 {
     LoadingElementId = "divCarregando",
+    UpdateTargetId = "Mensagem",
     HttpMethod = "POST",
     OnSuccess = "Sucesso",
     OnFailure = "Error"
@@ -74,7 +79,7 @@
 
 <script>
     function Sucesso(resposta) {
-
+        
     }
     function Error(resposta) {
 
