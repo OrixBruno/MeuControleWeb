@@ -31,7 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,10 +54,18 @@
     <Compile Include="SurdoBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Orix.MeuControle.DataAccess\Orix.MeuControle.DataAccess.csproj">
+      <Project>{d90b7d3e-f3fd-421f-b1d2-94cc43317867}</Project>
+      <Name>Orix.MeuControle.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj">
       <Project>{0703cfa7-19aa-4ca0-89a7-aadeb80e4f0a}</Project>
       <Name>Orix.MeuControle.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

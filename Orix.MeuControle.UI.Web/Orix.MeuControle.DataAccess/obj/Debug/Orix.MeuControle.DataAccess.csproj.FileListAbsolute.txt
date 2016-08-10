@@ -1,5 +1,0 @@
-C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.DataAccess.dll
-C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.DataAccess.pdb
-C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.csprojResolveAssemblyReference.cache
-C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.dll
-C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.pdb
