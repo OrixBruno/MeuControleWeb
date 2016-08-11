@@ -26,8 +26,8 @@
                     <td class="col-md-1">@surdo.Numero</td>
                     <td>@surdo.Bairro</td>
                     <td>@surdo.Observacao</td>
-                    <td><a onclick="Editar(@surdo.Codigo);"><span class="glyphicon glyphicon-pencil" /></a></td>
-                    <td><a onclick="Excluir(@surdo.Codigo);"><span class="glyphicon glyphicon-trash" /></a></td>
+                    <td><a class="glyphicon glyphicon-pencil" href="/ControleMapas/Surdo/Editar/@surdo.Codigo"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="Excluir(@surdo.Codigo);"></a></td>
                 </tr>
             }
         </tbody>

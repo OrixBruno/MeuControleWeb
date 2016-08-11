@@ -1,31 +1,45 @@
-﻿using Orix.MeuControle.DataAccess;
-using Orix.MeuControle.Domain.Surdos;
+﻿using Orix.MeuControle.Domain.Surdos;
+using Orix.MeuControle.Repository.Implementation;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orix.MeuControle.Business
 {
     public class SurdoBusiness
     {
-        Conexao conexao = new Conexao();
+        PessoaRepository _repository = new PessoaRepository();
+
+        #region Validações
+        private void Validar(PessoaDomainModel surdoTela)
+        {
+            if (surdoTela.Idade < 5)
+                throw new Exception("Idade minima de 5 anos");
+        }
+        #endregion
 
         public void Cadastrar(PessoaDomainModel surdoTela)
         {
-            if (surdoTela.Idade < 5)
-                throw new Exception("Idade minima de 5 anos");
-            conexao.Pessoa.Add(surdoTela);
+            Validar(surdoTela);
+            _repository.Cadastrar(surdoTela);
         }
         public List<PessoaDomainModel> Lista()
         {
-            return conexao.Pessoa.ToList();
+            return _repository.Listar();
         }
         public void Editar(PessoaDomainModel surdoTela)
         {
-            if (surdoTela.Idade < 5)
-                throw new Exception("Idade minima de 5 anos");
+            Validar(surdoTela);
+            _repository.Editar(surdoTela);
+        }
+
+        public PessoaDomainModel Buscar(Int32 id)
+        {
+            return _repository.Buscar(id);
+        }
+
+        public void Excluir(Int32 id)
+        {
+            _repository.Excluir(id);
         }
     }
 }

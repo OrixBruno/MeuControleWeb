@@ -1,27 +1,22 @@
-﻿using Orix.MeuControle.Domain.Surdos;
-using Orix.MeuControle.Mapping;
+﻿using Orix.MeuControle.DataAccess.Mappings;
+using Orix.MeuControle.Domain.Surdos;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orix.MeuControle.DataAccess
 {
     public class Conexao : DbContext
     {
         public Conexao()
-            : base("DataContext")
+            : base(@"Data Source=(localdb)\v11.0;Initial Catalog=DBCONTROLEMAPAS;Integrated Security=True")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
 
             Database.SetInitializer<Conexao>(new CreateDatabaseIfNotExists<Conexao>());
 
-            //Caso exista o contexto habilite está opção
-            //Database.SetInitializer<UserDbContext>(new MigrateDatabaseToLatestVersion<UserDbContext, Configuration>());
+            //Database.SetInitializer<Conexao>(new MigrateDatabaseToLatestVersion<Conexao, Configuration>());
         }
 
         public DbSet<PessoaDomainModel> Pessoa { get; set; }

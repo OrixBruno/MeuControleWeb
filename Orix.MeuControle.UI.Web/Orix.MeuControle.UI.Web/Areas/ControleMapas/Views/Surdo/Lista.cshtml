@@ -8,6 +8,10 @@
     Carregando...
 </div>
 
+<div id="mensagem">
+
+</div>
+
 <div class="btn btn-marginTop-15">
     <input type="submit" name="carregar" id="carregar" value="Carregar" class="btn btn-default" />
 </div>
@@ -37,13 +41,6 @@
                  }
              });
         });
-        function Editar(codigo) {
-            $.ajax({
-
-
-
-            });
-        };
         function Excluir(codigo) {
             $.ajax({
                 type:'DELETE',
@@ -54,9 +51,7 @@
                     $("#divCarregando").show();
                 },
                 success: function (data) {
-                    if (data.status == 200) {
-                        alert("Excluido com sucesso");
-                    }
+                    $('#mensagem').html(data);
                 },
                 complete: function () {
                     $("#divCarregando").hide();

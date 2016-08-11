@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.Business",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.DataAccess", "Orix.MeuControle.DataAccess\Orix.MeuControle.DataAccess.csproj", "{D90B7D3E-F3FD-421F-B1D2-94CC43317867}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.Mapping", "Orix.MeuControle.Mapping\Orix.MeuControle.Mapping.csproj", "{42FB970D-43DB-489B-8176-3C23B6F254F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orix.MeuControle.Repository", "Orix.MeuControle.Repository\Orix.MeuControle.Repository.csproj", "{889C1B3A-4386-496C-AC91-061975BF8C69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{D90B7D3E-F3FD-421F-B1D2-94CC43317867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D90B7D3E-F3FD-421F-B1D2-94CC43317867}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D90B7D3E-F3FD-421F-B1D2-94CC43317867}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42FB970D-43DB-489B-8176-3C23B6F254F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42FB970D-43DB-489B-8176-3C23B6F254F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42FB970D-43DB-489B-8176-3C23B6F254F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42FB970D-43DB-489B-8176-3C23B6F254F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{889C1B3A-4386-496C-AC91-061975BF8C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{889C1B3A-4386-496C-AC91-061975BF8C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{889C1B3A-4386-496C-AC91-061975BF8C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{889C1B3A-4386-496C-AC91-061975BF8C69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +56,6 @@ Global
 		{0703CFA7-19AA-4CA0-89A7-AADEB80E4F0A} = {68EBB95A-5633-4D2F-AC34-29EE568726CF}
 		{A0FEE4F7-CF27-491F-A9CA-5BA6DA49668B} = {FFD68C93-3BF6-46E7-BDB7-19DC4DCA3003}
 		{D90B7D3E-F3FD-421F-B1D2-94CC43317867} = {0F51A287-52E0-4A66-A9DF-C49913A4CCCC}
-		{42FB970D-43DB-489B-8176-3C23B6F254F5} = {0F51A287-52E0-4A66-A9DF-C49913A4CCCC}
+		{889C1B3A-4386-496C-AC91-061975BF8C69} = {0F51A287-52E0-4A66-A9DF-C49913A4CCCC}
 	EndGlobalSection
 EndGlobal

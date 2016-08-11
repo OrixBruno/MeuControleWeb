@@ -1,0 +1,14 @@
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.DataAccess.dll.config
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.DataAccess.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.DataAccess.pdb
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.Domain.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\Orix.MeuControle.Domain.pdb
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.Properties.Resources.resources
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.csproj.GenerateResource.Cache
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.dll
+C:\Users\bsnascimento\Documents\ProjetosMVC\Orix.MeuControle.UI.Web\Orix.MeuControle.DataAccess\obj\Debug\Orix.MeuControle.DataAccess.pdb

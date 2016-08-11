@@ -54,13 +54,13 @@
     <Compile Include="SurdoBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Orix.MeuControle.DataAccess\Orix.MeuControle.DataAccess.csproj">
-      <Project>{d90b7d3e-f3fd-421f-b1d2-94cc43317867}</Project>
-      <Name>Orix.MeuControle.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj">
       <Project>{0703cfa7-19aa-4ca0-89a7-aadeb80e4f0a}</Project>
       <Name>Orix.MeuControle.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orix.MeuControle.Repository\Orix.MeuControle.Repository.csproj">
+      <Project>{889c1b3a-4386-496c-ac91-061975bf8c69}</Project>
+      <Name>Orix.MeuControle.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

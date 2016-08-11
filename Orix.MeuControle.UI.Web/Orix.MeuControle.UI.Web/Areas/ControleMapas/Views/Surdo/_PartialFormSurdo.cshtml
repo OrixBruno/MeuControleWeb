@@ -13,13 +13,16 @@
     HttpMethod = "POST",
     OnSuccess = "Sucesso",
     OnFailure = "Error"
-}))
+}, new { @id = "formAdicionar"}))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
         <div class="form-group">
+
+            @Html.HiddenFor(x => x.Codigo)
+
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
                 @Html.TextBoxFor(model => model.Nome, new { @maxlength = "50" })
@@ -71,6 +74,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <input id="limpar" name="salvar" type="reset" value="Limpar" class="btn btn-danger" />
                 <input id="salvar" name="salvar" type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </div>
@@ -79,7 +83,8 @@
 
 <script>
     function Sucesso(resposta) {
-        
+        //window.location.reload(true);
+        document.getElementById('formAdicionar').reset();
     }
     function Error(resposta) {
 

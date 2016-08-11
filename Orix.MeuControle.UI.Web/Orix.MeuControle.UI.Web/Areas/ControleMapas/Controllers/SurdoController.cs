@@ -67,6 +67,22 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         {
             return PartialView("_PartialSurdoLista", TypeAdapter.Adapt<List<PessoaViewModel>>(_negocios.Lista()));
         }
+
+        // GET: ControleMapas/Surdo/Editar
+        public ActionResult Editar(Int32 id)
+        {
+            ListaGeneros();
+            try
+            {
+                return View(TypeAdapter.Adapt<PessoaViewModel>(_negocios.Buscar(id)));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return View();
+            }
+        }
         #endregion
 
         #region POST
@@ -110,9 +126,21 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 
         #region DELETE
         [HttpDelete]
-        public ActionResult Excluir()
+        public ActionResult Excluir(Int32 id)
         {
-            return View();
+            try
+            {
+                _negocios.Excluir(id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Surdo excluido com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         #endregion
     }
