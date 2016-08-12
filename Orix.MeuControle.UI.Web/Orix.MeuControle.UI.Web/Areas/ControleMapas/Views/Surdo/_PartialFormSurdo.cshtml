@@ -2,14 +2,14 @@
 
 @Html.Partial("_PartialCarregando")
 
-<div id="Mensagem">
+<div id="mensagem">
 
 </div>
 
 @using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Surdo", new AjaxOptions
 {
     LoadingElementId = "divCarregando",
-    UpdateTargetId = "Mensagem",
+    UpdateTargetId = "mensagem",
     HttpMethod = "POST",
     OnSuccess = "Sucesso",
     OnFailure = "Error"
@@ -83,8 +83,9 @@
 
 <script>
     function Sucesso(resposta) {
-        //window.location.reload(true);
-        document.getElementById('formAdicionar').reset();
+        if ("@ViewContext.RouteData.Values["action"].ToString()" == "Adicionar") {
+            document.getElementById('formAdicionar').reset();
+        }
     }
     function Error(resposta) {
 

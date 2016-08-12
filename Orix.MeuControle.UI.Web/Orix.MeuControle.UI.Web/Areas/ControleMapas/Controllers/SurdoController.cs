@@ -50,6 +50,23 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         #endregion
 
         #region GET
+        [HttpGet]
+        public ActionResult Excluir(Int32 id)
+        {
+            try
+            {
+                _negocios.Excluir(id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Surdo excluido com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
         // GET: ControleMapas/Surdo/Adicionar
         public ActionResult Adicionar()
         {
@@ -119,26 +136,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
                 ViewBag.Message = ex.Message;
                 ViewBag.Status = "danger";
 
-                return PartialView("_PartialAlerta");
-            }
-        }
-        #endregion
-
-        #region DELETE
-        [HttpDelete]
-        public ActionResult Excluir(Int32 id)
-        {
-            try
-            {
-                _negocios.Excluir(id);
-                ViewBag.Status = "success";
-                ViewBag.Message = "Surdo excluido com sucesso!";
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
                 return PartialView("_PartialAlerta");
             }
         }

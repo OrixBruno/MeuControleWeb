@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Surdos lista";
 }
 <div id="divCarregando" class="progresso">
@@ -7,43 +6,41 @@
     <br />
     Carregando...
 </div>
-
 <div id="mensagem">
-
 </div>
-
 <div class="btn btn-marginTop-15">
     <input type="submit" name="carregar" id="carregar" value="Carregar" class="btn btn-default" />
 </div>
-
 <div id="conteudoLista">
-
 </div>
-
 @section ChamadaAjax{
     <script>
         $('#carregar').click(function () {
-             $.ajax(
-             {
-                 type: 'GET',
-                 url: '/ControleMapas/Surdo/ObterListaSurdos',
-                 dataType: 'html',
-                 cache: false,
-                 async: true,
-                 beforeSend: function () {
-                     $("#divCarregando").show();
-                 },
-                 success: function (data) {
-                     $('#conteudoLista').html(data);
-                 },
-                 complete: function () {
-                     $("#divCarregando").hide();
-                 }
-             });
+            CarregarLista();
         });
+
+        function CarregarLista() {
+            $.ajax(
+            {
+                type: 'GET',
+                url: '/ControleMapas/Surdo/ObterListaSurdos',
+                dataType: 'html',
+                cache: false,
+                async: true,
+                beforeSend: function () {
+                    $("#divCarregando").show();
+                },
+                success: function (data) {
+                    $('#conteudoLista').html(data);
+                },
+                complete: function () {
+                    $("#divCarregando").hide();
+                }
+            });
+        }
         function Excluir(codigo) {
             $.ajax({
-                type:'DELETE',
+                type: 'GET',
                 url: '/ControleMapas/Surdo/Excluir/' + codigo,
                 async: true,
                 cache: false,
@@ -52,6 +49,7 @@
                 },
                 success: function (data) {
                     $('#mensagem').html(data);
+                    CarregarLista();
                 },
                 complete: function () {
                     $("#divCarregando").hide();
@@ -59,8 +57,8 @@
             });
         };
         //ATIVAR CARREGAMENTO ASYNC
-        //$(document).ready(function () {
-        //    setInterval(atualizarDefinicao, 30000);
-        //});
+        $(document).ready(function () {
+            setInterval(CarregarLista, 60000);
+        });
     </script>
 }
