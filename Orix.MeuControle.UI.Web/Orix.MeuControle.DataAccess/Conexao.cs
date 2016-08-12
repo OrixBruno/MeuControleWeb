@@ -1,4 +1,5 @@
 ﻿using Orix.MeuControle.DataAccess.Mappings;
+using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.Domain.Surdos;
 using System;
 using System.Data.Entity;
@@ -20,6 +21,10 @@ namespace Orix.MeuControle.DataAccess
         }
 
         public DbSet<PessoaDomainModel> Pessoa { get; set; }
+        public DbSet<MapaDomainModel> Mapa { get; set; }
+        public DbSet<LetraDomainModel> Letra { get; set; }
+        public DbSet<SaidaDomainModel> Saida { get; set; }
+        public DbSet<TerritorioDomainModel> Territorio { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,6 +36,10 @@ namespace Orix.MeuControle.DataAccess
                 .Configure(p => p.HasColumnType("varchar"));
 
             modelBuilder.Configurations.Add(new PessoaMapping());
+            modelBuilder.Configurations.Add(new MapaMapping());
+            modelBuilder.Configurations.Add(new LetraMapping());
+            modelBuilder.Configurations.Add(new TerritorioMapping());
+            modelBuilder.Configurations.Add(new SaidaMapping());
         }
     }
 }

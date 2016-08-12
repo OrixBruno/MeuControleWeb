@@ -1,14 +1,13 @@
 ﻿@model PessoaViewModel
 
-@Html.Partial("_PartialCarregando")
-
 <div id="mensagem">
 
 </div>
 
 @using (Ajax.BeginForm(ViewContext.RouteData.Values["action"].ToString(), "Surdo", new AjaxOptions
 {
-    LoadingElementId = "divCarregando",
+    OnBegin = "Carregando",
+    OnComplete = "Concluido",
     UpdateTargetId = "mensagem",
     HttpMethod = "POST",
     OnSuccess = "Sucesso",
@@ -89,6 +88,12 @@
     }
     function Error(resposta) {
 
+    }
+    function Carregando() {
+        $("#myModal").modal('show');
+    }
+    function Concluido() {
+        $("#myModal").modal('hide');
     }
 </script>
 

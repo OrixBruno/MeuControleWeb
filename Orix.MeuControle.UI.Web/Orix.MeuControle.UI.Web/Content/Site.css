@@ -40,3 +40,13 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.modal-dialog {
+    margin: 215px auto !important;
+}
+.modal-carregando{
+    text-align:center;
+}
+#mensagem{
+    margin-top: 20px;
+}

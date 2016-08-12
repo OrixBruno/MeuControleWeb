@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapa\LetraDomainModel.cs" />
+    <Compile Include="Mapa\MapaDomainModel.cs" />
+    <Compile Include="Mapa\SaidaDomainModel.cs" />
+    <Compile Include="Mapa\TerritorioDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Surdos\PessoaDomainModel.cs" />
   </ItemGroup>

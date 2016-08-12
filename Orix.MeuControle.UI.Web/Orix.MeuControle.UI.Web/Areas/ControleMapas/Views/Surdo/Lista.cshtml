@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "Surdos lista";
 }
-<div id="divCarregando" class="progresso">
+
+@*<div id="divCarregando" class="progresso">
     <img src="@Url.Content("~/Content/images/carregando.gif")" />
     <br />
     Carregando...
-</div>
+</div>*@
+
 <div id="mensagem">
 </div>
 <div class="btn btn-marginTop-15">
@@ -28,13 +30,13 @@
                 cache: false,
                 async: true,
                 beforeSend: function () {
-                    $("#divCarregando").show();
+                    $('#myModal').modal('show');
                 },
                 success: function (data) {
                     $('#conteudoLista').html(data);
                 },
                 complete: function () {
-                    $("#divCarregando").hide();
+                    $('#myModal').modal('hide');
                 }
             });
         }
@@ -45,20 +47,21 @@
                 async: true,
                 cache: false,
                 beforeSend: function () {
-                    $("#divCarregando").show();
+                    $('#myModal').modal('show');
                 },
                 success: function (data) {
                     $('#mensagem').html(data);
                     CarregarLista();
                 },
                 complete: function () {
-                    $("#divCarregando").hide();
+                    $('#myModal').modal('hide');
                 }
             });
         };
+
         //ATIVAR CARREGAMENTO ASYNC
         $(document).ready(function () {
-            setInterval(CarregarLista, 60000);
+            setInterval(CarregarLista, 30000);
         });
     </script>
 }

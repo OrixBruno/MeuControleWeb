@@ -11,7 +11,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
         // GET: Principal
         public ActionResult Index()
         {
-            return View();
+            return Redirect("ControleMapas/Home");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Orix.MeuControle.DataAccess.Mappings
     {
         public PessoaMapping()
         {
-            ToTable("Pessoa");
+            ToTable("TB_PESSOA");
 
             HasKey(x => x.Codigo);
 
@@ -16,7 +16,7 @@ namespace Orix.MeuControle.DataAccess.Mappings
             Property(x => x.Genero).HasMaxLength(100).IsRequired().HasColumnName("DS_GENERO");
             Property(x => x.Idade).IsRequired().HasColumnName("DS_IDADE");
             Property(x => x.Numero).IsRequired().HasColumnName("DS_NUMERO");
-            Property(x => x.Observacao).HasMaxLength(250).IsRequired().HasColumnName("DS_OBSERVACAO");
+            Property(x => x.Observacao).HasMaxLength(250).HasColumnName("DS_OBSERVACAO");
             Property(x => x.Rua).HasMaxLength(100).IsRequired().HasColumnName("DS_RUA");
         }
     }

@@ -51,7 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexao.cs" />
+    <Compile Include="Mappings\LetraMapping.cs" />
+    <Compile Include="Mappings\MapaMapping.cs" />
     <Compile Include="Mappings\PessoaMapping.cs" />
+    <Compile Include="Mappings\SaidaMapping.cs" />
+    <Compile Include="Mappings\TerritorioMapping.cs" />
+    <Compile Include="Migrations\201608121402203_InitialCreate.cs" />
+    <Compile Include="Migrations\201608121402203_InitialCreate.Designer.cs">
+      <DependentUpon>201608121402203_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -74,6 +82,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608121402203_InitialCreate.resx">
+      <DependentUpon>201608121402203_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

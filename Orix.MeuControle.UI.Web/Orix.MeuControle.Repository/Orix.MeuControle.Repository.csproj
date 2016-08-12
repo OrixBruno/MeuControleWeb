@@ -50,8 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Base\IGravacao.cs" />
+    <Compile Include="Contracts\Base\ILeitura.cs" />
+    <Compile Include="Contracts\ILetraRepository.cs" />
+    <Compile Include="Contracts\IMapaRepository.cs" />
     <Compile Include="Contracts\IPessoaRepository.cs" />
+    <Compile Include="Contracts\ISaidaRepository.cs" />
+    <Compile Include="Contracts\ITerritorioRepository.cs" />
+    <Compile Include="Implementation\LetraRepository.cs" />
+    <Compile Include="Implementation\MapaRepository.cs" />
     <Compile Include="Implementation\PessoaRepository.cs" />
+    <Compile Include="Implementation\SaidaRepository.cs" />
+    <Compile Include="Implementation\TerritorioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

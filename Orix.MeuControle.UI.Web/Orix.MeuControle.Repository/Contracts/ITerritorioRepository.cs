@@ -1,4 +1,4 @@
-﻿using Orix.MeuControle.Domain.Surdos;
+﻿using Orix.MeuControle.Domain.Mapa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Orix.MeuControle.Repository.Contracts
 {
-    interface IPessoaRepository: Base.ILeitura<PessoaDomainModel>, Base.IGravacao<PessoaDomainModel>
+    interface ITerritorioRepository : Base.IGravacao<TerritorioDomainModel>, Base.ILeitura<TerritorioDomainModel>
     {
-
     }
 }
