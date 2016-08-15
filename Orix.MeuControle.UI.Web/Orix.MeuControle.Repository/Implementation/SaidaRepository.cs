@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Orix.MeuControle.Domain.Mapa;
+using Orix.MeuControle.DataAccess;
+using System.Linq;
 
 namespace Orix.MeuControle.Repository.Implementation
 {
     public class SaidaRepository : Contracts.ISaidaRepository
     {
+        Conexao _conexao = new Conexao();
+
         public SaidaDomainModel Buscar(int id)
         {
             throw new NotImplementedException();
@@ -16,7 +17,8 @@ namespace Orix.MeuControle.Repository.Implementation
 
         public void Cadastrar(SaidaDomainModel dadosTela)
         {
-            throw new NotImplementedException();
+            _conexao.Saida.Add(dadosTela);
+            _conexao.SaveChanges();
         }
 
         public void Editar(SaidaDomainModel dadosTela)
@@ -31,7 +33,7 @@ namespace Orix.MeuControle.Repository.Implementation
 
         public List<SaidaDomainModel> Listar()
         {
-            throw new NotImplementedException();
+            return _conexao.Saida.OrderBy(x => x.Local).ToList();
         }
     }
 }

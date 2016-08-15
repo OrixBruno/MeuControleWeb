@@ -1,14 +1,9 @@
 ﻿using Orix.MeuControle.Domain.Mapa;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orix.MeuControle.DataAccess.Mappings
 {
-    public class TerritorioMapping : EntityTypeConfiguration<TerritorioDomainModel>
+    public sealed class TerritorioMapping : EntityTypeConfiguration<TerritorioDomainModel>
     {
         public TerritorioMapping()
         {

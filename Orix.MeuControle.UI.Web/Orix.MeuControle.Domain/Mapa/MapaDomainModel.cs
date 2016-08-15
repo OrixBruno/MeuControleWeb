@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orix.MeuControle.Domain.Mapa
 {
@@ -20,6 +16,5 @@ namespace Orix.MeuControle.Domain.Mapa
         public virtual LetraDomainModel Letra { get; set; }
         public virtual SaidaDomainModel Saida { get; set; }
         public virtual TerritorioDomainModel Territorio { get; set; }
-
     }
 }

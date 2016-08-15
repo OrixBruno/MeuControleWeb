@@ -26,43 +26,43 @@
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mapas<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/ControleMapas/Mapa/Impressao">Impressão</a></li>
+                                <li>
+                                    <a class="trigger right-caret">Mapa</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li><a href="/ControleMapas/Mapa/Adicionar">Cadastrar</a></li>
+                                        <li><a href="#">Todos os mapas</a></li>
+                                        <li><a href="/ControleMapas/Mapa/Impressao">Impressão</a></li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <a class="trigger right-caret">Foto</a>
                                     <ul class="dropdown-menu sub-menu">
                                         <li><a href="#">Cadastrar</a></li>
                                         <li><a href="#">Listar</a></li>
-                                        <li>
-                                            <a class="trigger right-caret">Level 2</a>
-                                            <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a class="trigger right-caret">Configuração</a>
                                     <ul class="dropdown-menu sub-menu">
                                         <li>
+                                            <a class="showModal" href="/ControleMapas/Mapa/Configuracoes">Listar Configurações</a>
+                                        </li>
+                                        <li>
                                             <a class="trigger right-caret">Letras dos Mapas</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#">Adicionar</a></li>
-                                                <li><a href="#">Listar</a></li>
+                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Mapa/Letra')">Adicionar</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="trigger right-caret">Saídas</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#">Adicionar</a></li>
-                                                <li><a href="#">Locais</a></li>
+                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Mapa/Saida')">Adicionar</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="trigger right-caret">Territórios</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#">Novo</a></li>
-                                                <li><a href="#">Todos</a></li>
+                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Mapa/Territorio')">Novo</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -102,6 +102,9 @@
                 </div>
             </div>
         </div>
+
+        @Html.Partial("_PartialModalConfig")
+
         <div id="body-section" class="container">
             @RenderBody()
         </div>
@@ -111,7 +114,11 @@
             @Html.Partial("_PartialFooter")
         </div>
     </footer>
+
+
     @Html.Partial("_PartialScripts")
+
+
     <script>
         $('#myModal').modal({
             show: false,
@@ -141,7 +148,35 @@
                 root.find('.sub-menu:visible').hide();
             });
         });
+
+        function ModalAdicionar(url) {
+            $.ajax(
+                    {
+                        type: 'GET',
+                        url: url,
+                        dataType: 'html',
+                        cache: false,
+                        async: true,
+                        beforeSend: function () {
+                            $('#myModal').modal('show');
+                        },
+                        success: function (data) {
+                            $('#tituloFooter').text("Adicionando ...");
+                            $('#conteudoModal').html(data);
+                            $('#modalConfiguracao').modal('show');
+                        },
+                        complete: function () {
+                            $('#myModal').modal('hide');
+                        }
+                    });
+        };
+
+        $('.showModal').click(function () {
+            $('#myModal').modal('show');
+        });
     </script>
+
+
     @RenderSection("ScriptsImpressao", false)
     @RenderSection("ChamadaAjax", false)
 </body>

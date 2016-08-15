@@ -30,7 +30,7 @@
 
             @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                 @Html.DropDownListFor(model => model.Genero, (SelectList)TempData["Generos"], new { })
+                 @Html.DropDownListFor(model => model.Genero, (SelectList)TempData["Generos"], new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Genero)
             </div>
         </div>
