@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.DataAccess;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Orix.MeuControle.Repository.Implementation
 {
@@ -10,9 +11,9 @@ namespace Orix.MeuControle.Repository.Implementation
     {
         Conexao _conexao = new Conexao();
 
-        public LetraDomainModel Buscar(int id)
+        public LetraDomainModel Buscar(Int32 id)
         {
-            throw new NotImplementedException();
+            return _conexao.Letra.Find(id);
         }
 
         public void Cadastrar(LetraDomainModel dadosTela)
@@ -23,12 +24,14 @@ namespace Orix.MeuControle.Repository.Implementation
 
         public void Editar(LetraDomainModel dadosTela)
         {
-            throw new NotImplementedException();
+            _conexao.Entry(dadosTela).State = EntityState.Modified;
+            _conexao.SaveChanges();
         }
 
-        public void Excluir(int id)
+        public void Excluir(Int32 id)
         {
-            throw new NotImplementedException();
+            _conexao.Letra.Remove(_conexao.Letra.Find(id));
+            _conexao.SaveChanges();
         }
 
         public List<LetraDomainModel> Listar()

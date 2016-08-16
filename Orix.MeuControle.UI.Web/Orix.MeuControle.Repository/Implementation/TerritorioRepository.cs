@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.DataAccess;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Orix.MeuControle.Repository.Implementation
 {
     public class TerritorioRepository : Contracts.ITerritorioRepository
     {
         Conexao _conexao = new Conexao();
-        public TerritorioDomainModel Buscar(int id)
+        public TerritorioDomainModel Buscar(Int32 id)
         {
-            throw new NotImplementedException();
+            return _conexao.Territorio.Find(id);
         }
 
         public void Cadastrar(TerritorioDomainModel dadosTela)
@@ -22,12 +23,14 @@ namespace Orix.MeuControle.Repository.Implementation
 
         public void Editar(TerritorioDomainModel dadosTela)
         {
-            throw new NotImplementedException();
+            _conexao.Entry(dadosTela).State = EntityState.Modified;
+            _conexao.SaveChanges();
         }
 
-        public void Excluir(int id)
+        public void Excluir(Int32 id)
         {
-            throw new NotImplementedException();
+            _conexao.Territorio.Remove(_conexao.Territorio.Find(id));
+            _conexao.SaveChanges();
         }
 
         public List<TerritorioDomainModel> Listar()

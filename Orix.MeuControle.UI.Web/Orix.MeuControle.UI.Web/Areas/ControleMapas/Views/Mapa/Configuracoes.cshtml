@@ -3,7 +3,15 @@
     ViewBag.Title = "Configurações";
 }
 
+<script>
+    function Teste() {
+        alert("@ViewBag.Teste");
+    }
+</script>
+
+
 <h2>Configurações Lista</h2>
+<input value="Teste" type="button" class="btn btn-default" id="teste" name="Teste" onclick="Teste();"/>
 
 @Html.Partial("_PartialListaLetra")
 

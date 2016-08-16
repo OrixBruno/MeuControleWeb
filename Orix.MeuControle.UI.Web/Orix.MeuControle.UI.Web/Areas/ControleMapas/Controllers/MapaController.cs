@@ -34,6 +34,18 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             ViewBag.SelectSaidas = new SelectList(ObterSaidas(), "ID", "Local", "Selecione...");
             ViewBag.SelectTerritorios = new SelectList(ObterTerritorios(), "ID", "Nome", "Selecione...");
         }
+        private void CarregarEstadosCidades()
+        {
+            using (StreamReader sr = new StreamReader(Server.MapPath("~/json/City.json")))
+            {
+                var listaEstadosCidades = JsonConvert.DeserializeObject<ListaEstadosCidades>(sr.ReadToEnd());
+
+                using (StreamReader sr2 = new StreamReader(Server.MapPath("~/json/Estate.json")))
+                {
+                    var estados = JsonConvert.DeserializeObject<ListaEstados>(sr2.ReadToEnd());
+                }
+            }
+        }
         #endregion
 
         #region MAPA
@@ -195,23 +207,19 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         }
         #endregion
 
+        #region CONFIGURACOES
         public ActionResult Configuracoes()
         {
             ViewBag.LetraList = ObterLetras();
             ViewBag.SaidaList = ObterSaidas();
             ViewBag.TerritorioList = ObterTerritorios();
 
-            var listaCidades = new List<Cidades>();
-            using (StreamReader sr = new StreamReader(Server.MapPath("~/json/City.json")))
-            {
-                listaCidades = JsonConvert.DeserializeObject<List<Cidades>>(sr.ReadToEnd());
-            }
-
             return View();
         }
+        #endregion
+
         public ActionResult ListaMunicipios()
         {
-
             return View();
         }
     }
