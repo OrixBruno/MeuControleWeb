@@ -56,6 +56,10 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -164,7 +168,6 @@
     <Content Include="Areas\ControleMapas\Views\web.config" />
     <Content Include="Areas\ControleMapas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Shared\_LayoutMapas.cshtml" />
-    <Content Include="Areas\ControleMapas\Views\Home\Index.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\Impressao.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\_PartialMapaImprimir.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Surdo\Adicionar.cshtml" />
@@ -172,6 +175,21 @@
     <Content Include="Areas\ControleMapas\Views\Surdo\_PartialFormSurdo.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Surdo\Lista.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Surdo\_PartialSurdoLista.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Principal\Index.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Home\Index.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Shared\_PartialModalConfig.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialLetraAdicionar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialSaidaAdicionar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialTerritorioAdicionar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\Configuracoes.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialListaLetra.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialListaSaida.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialListaTerritorio.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\Adicionar.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\_PartialForm.cshtml" />
+    <Content Include="Areas\ControleMapas\Views\Mapa\Editar.cshtml" />
+    <Content Include="json\City.json" />
+    <Content Include="json\Estate.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\chamadas-ajax.js" />
     <Content Include="Scripts\funcoes.js" />
@@ -195,42 +213,27 @@
     <Compile Include="Areas\ControleMapas\Controllers\HomeController.cs" />
     <Compile Include="Areas\ControleMapas\Controllers\MapaController.cs" />
     <Compile Include="Areas\ControleMapas\Controllers\SurdoController.cs" />
-    <Compile Include="Controllers\ContaController.cs" />
+    <Compile Include="Areas\ControleMapas\ViewModels\LetraViewModel.cs" />
+    <Compile Include="Areas\ControleMapas\ViewModels\MapaViewModel.cs" />
+    <Compile Include="Areas\ControleMapas\ViewModels\SaidaViewModel.cs" />
+    <Compile Include="Areas\ControleMapas\ViewModels\TerritorioViewModel.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
-    <Compile Include="Controllers\ReceitaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Bases\Lista.cs" />
-    <Compile Include="ViewModels\CategoriaViewModel.cs" />
-    <Compile Include="ViewModels\ContaViewModel.cs" />
+    <Compile Include="json\JsonObjetos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
-    <Compile Include="ViewModels\ReceitaViewModel.cs" />
-    <Compile Include="ViewModels\TipoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Conta\Adicionar.cshtml" />
-    <Content Include="Views\Conta\_ObterDados.cshtml" />
-    <Content Include="Views\Conta\Listar.cshtml" />
-    <Content Include="Views\Conta\_FormConta.cshtml" />
-    <Content Include="Views\Conta\Editar.cshtml" />
-    <Content Include="Views\Conta\_LayoutConta.cshtml" />
-    <Content Include="Views\Shared\_PartialMenu.cshtml" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Shared\_PartialEstilos.cshtml" />
     <Content Include="Views\Shared\_PartialScripts.cshtml" />
-    <Content Include="Views\Receita\Adicionar.cshtml" />
-    <Content Include="Views\Receita\_FormReceita.cshtml" />
-    <Content Include="Views\Receita\Editar.cshtml" />
     <Content Include="Views\Shared\_PartialModal.cshtml" />
-    <Content Include="Views\Receita\Listar.cshtml" />
-    <Content Include="Views\Principal\Index.cshtml" />
     <Content Include="Views\Shared\_PartialCarregando.cshtml" />
     <Content Include="Views\Shared\_PartialAlerta.cshtml" />
     <None Include="Web.Debug.config">
@@ -242,7 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ControleMapas\ViewModels\" />
+    <Folder Include="Views\Principal\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orix.MeuControle.Business\Orix.MeuControle.Business.csproj">

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
@@ -11,7 +7,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Home
         public ActionResult Index()
         {
-            
             return View();
         }
     }

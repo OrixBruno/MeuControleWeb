@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Controllers
 {
@@ -11,7 +7,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
         // GET: Principal
         public ActionResult Index()
         {
-            return View();
+            return Redirect("ControleMapas/Home");
         }
     }
 }

@@ -1,0 +1,31 @@
+﻿<div class="table-responsive">
+    <h4>Lista de Saídas</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-1">Codigo</th>
+                <th>Local</th>
+                <th>Logradouro</th>
+                <th class="col-md-1">Editar</th>
+                <th class="col-md-1">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var saida in (List<SaidaViewModel>)ViewBag.SaidaList)
+            {
+                <tr>
+                    <td class="col-md-1">@saida.ID</td>
+                    <td>@saida.Local</td>
+                    <td>@saida.Logradouro</td>
+                    <td><a class="glyphicon glyphicon-pencil" href="#"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="My()"></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">Total de saídas cadastrados: @ViewBag.LetraList.Count</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
