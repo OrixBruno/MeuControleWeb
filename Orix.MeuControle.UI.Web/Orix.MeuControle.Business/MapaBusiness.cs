@@ -12,12 +12,23 @@ namespace Orix.MeuControle.Business
         TerritorioRepository _territorioRepository = new TerritorioRepository();
         MapaRepository _mapaRepository = new MapaRepository();
 
-        #region CADASTRAR
+        #region LETRA
         public void LetraCadastrar(LetraDomainModel dadosTela)
         {
             _letraRepository.Cadastrar(dadosTela);
         }
-
+        public List<LetraDomainModel> LetraLista()
+        {
+            return _letraRepository.Listar();
+        }
+        public void LetraEdita(LetraDomainModel dadosTela)
+        {
+            _letraRepository.Editar(dadosTela);
+            //_letraRepository.Buscar();
+            //_letraRepository.Excluir();
+            //_letraRepository.
+        }
+        #endregion
         public void SaidaCadastrar(SaidaDomainModel dadosTela)
         {
             _saidaRepository.Cadastrar(dadosTela);
@@ -31,14 +42,7 @@ namespace Orix.MeuControle.Business
         {
             _mapaRepository.Cadastrar(mapaDomainModel);
         }
-        #endregion
-
         #region LISTAS
-        public List<LetraDomainModel> LetraLista()
-        {
-            return _letraRepository.Listar();
-        }
-
         public List<SaidaDomainModel> SaidaLista()
         {
             return _saidaRepository.Listar();
