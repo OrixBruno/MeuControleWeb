@@ -15,16 +15,7 @@ namespace Orix.MeuControle.DataAccess.Migrations
 
         protected override void Seed(Conexao context)
         {
-            context.Pessoa.Add(new PessoaDomainModel() {
-                Bairro = "Cidade Kemel",
-                Codigo = 0,
-                Genero = "Homem",
-                Idade = 19,
-                Nome = "Bruno Silva do Nascimento",
-                Numero = 154,
-                Observacao = "Sabe libras",
-                Rua = "Thyrso Burgos Lopes"
-            });
+
         }
     }
 }

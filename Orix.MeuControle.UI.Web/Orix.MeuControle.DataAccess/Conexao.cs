@@ -17,7 +17,7 @@ namespace Orix.MeuControle.DataAccess
             Configuration.ProxyCreationEnabled = false;
 
             Database.SetInitializer<Conexao>(new CreateDatabaseIfNotExists<Conexao>());
-            //Database.SetInitializer<Conexao>(new MigrateDatabaseToLatestVersion<Conexao, Configuration>());
+            Database.SetInitializer<Conexao>(new MigrateDatabaseToLatestVersion<Conexao, Configuration>());
         }
 
         public DbSet<PessoaDomainModel> Pessoa { get; set; }

@@ -50,9 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IBusiness.cs" />
+    <Compile Include="LetraBusiness.cs" />
     <Compile Include="MapaBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaidaBusiness.cs" />
     <Compile Include="SurdoBusiness.cs" />
+    <Compile Include="TerritorioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj">

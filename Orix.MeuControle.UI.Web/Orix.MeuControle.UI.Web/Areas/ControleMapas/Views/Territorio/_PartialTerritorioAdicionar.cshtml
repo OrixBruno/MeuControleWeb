@@ -1,9 +1,10 @@
-﻿@model SaidaViewModel
+﻿@model TerritorioViewModel
+
 <div id="mensagem">
 
 </div>
 
-@using (Ajax.BeginForm("Saida", "Mapa", new AjaxOptions
+@using (Ajax.BeginForm("Adicionar", "Territorio", new AjaxOptions
 {
     OnBegin = "Carregando",
     OnComplete = "Concluido",
@@ -13,25 +14,18 @@
     OnFailure = "Error"
 }, new { @id = "formAdicionar" }))
 {
+
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Adicionar Saída</h4>
+        <h4>Adicionar Território</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Local, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Local, new { htmlAttributes = new { @class = "form-control", placeholder = "Salão Camargo Novo ..." } })
-                @Html.ValidationMessageFor(model => model.Local, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control", placeholder = "Rua Mario Covas, 273 ..." } })
-                @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "São Miguel, Itaim Paulista ..." } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -2,25 +2,105 @@
 @{
     ViewBag.Title = "Configurações";
 }
+<div class="mensagem">
 
-<script>
-    function Teste() {
-        alert("@ViewBag.Teste");
-    }
-</script>
+</div>
+<div id="partialLetra">
 
-
-<h2>Configurações Lista</h2>
-<input value="Teste" type="button" class="btn btn-default" id="teste" name="Teste" onclick="Teste();"/>
-
-@Html.Partial("_PartialListaLetra")
-
-<hr class="table-responsive hr-cinza-2px"/>
-
-@Html.Partial("_PartialListaSaida")
+</div>
 
 <hr class="table-responsive hr-cinza-2px" />
 
-@Html.Partial("_PartialListaTerritorio")
+<div id="partialSaida">
+
+</div>
 
 <hr class="table-responsive hr-cinza-2px" />
+
+<div id="partialTerritorio">
+
+</div>
+
+<hr class="table-responsive hr-cinza-2px" />
+@section ChamadaAjax{
+    <script>
+        $(function () {
+            CarregarTabelas();
+
+            function CarregarTabelas() {
+                $.ajax(
+            {
+                type: 'GET',
+                url: '/ControleMapas/Letra/Lista',
+                dataType: 'html',
+                cache: false,
+                async: true,
+                beforeSend: function () {
+                    $('#myModal').modal('show');
+                },
+                success: function (data) {
+                    $('#partialLetra').html(data);
+                },
+                complete: function () {
+                    $('#myModal').modal('hide');
+                }
+            });
+
+                $.ajax(
+                    {
+                        type: 'GET',
+                        url: '/ControleMapas/Saida/Lista',
+                        dataType: 'html',
+                        cache: false,
+                        async: true,
+                        beforeSend: function () {
+                            $('#myModal').modal('show');
+                        },
+                        success: function (data) {
+                            $('#partialSaida').html(data);
+                        },
+                        complete: function () {
+                            $('#myModal').modal('hide');
+                        }
+                    });
+
+                $.ajax(
+                    {
+                        type: 'GET',
+                        url: '/ControleMapas/Territorio/Lista',
+                        dataType: 'html',
+                        cache: false,
+                        async: true,
+                        beforeSend: function () {
+                            $('#myModal').modal('show');
+                        },
+                        success: function (data) {
+                            $('#partialTerritorio').html(data);
+                        },
+                        complete: function () {
+                            $('#myModal').modal('hide');
+                        }
+                    });
+            }
+            function Excluir(url) {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    async: true,
+                    cache: false,
+                    beforeSend: function () {
+                        $('#myModal').modal('show');
+                    },
+                    success: function (data) {
+                        $('#mensagem').html(data);
+                        CarregarTabelas();
+                    },
+                    complete: function () {
+                        $('#myModal').modal('hide');
+                    }
+                });
+            };
+            setInterval(CarregarTabelas, 30000);
+        });
+    </script>
+}

@@ -1,4 +1,5 @@
-﻿
+﻿@model List<TerritorioViewModel>
+
 <div class="table-responsive">
     <h4>Lista de Territórios</h4>
     <table class="table table-hover">
@@ -11,19 +12,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var territorio in (List<TerritorioViewModel>)ViewBag.TerritorioList)
+            @foreach (var territorio in Model)
             {
                 <tr>
                     <td class="col-md-1">@territorio.ID</td>
                     <td>@territorio.Nome</td>
                     <td><a class="glyphicon glyphicon-pencil" href="#"></a></td>
-                    <td><a class="glyphicon glyphicon-trash" onclick="My()"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="Excluir();"></a></td>
                 </tr>
             }
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4">Total de territórios cadastrados: @ViewBag.TerritorioList.Count</td>
+                <td colspan="4">Total de territórios cadastrados: @Model.Count</td>
             </tr>
         </tfoot>
     </table>
