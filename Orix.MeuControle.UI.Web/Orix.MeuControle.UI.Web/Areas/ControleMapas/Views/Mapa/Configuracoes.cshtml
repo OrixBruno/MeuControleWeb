@@ -30,5 +30,25 @@
             Ajax.CarregarTabelas();
             setInterval(Ajax.CarregarTabelas, 500000);
         });
+
+        var ajax = {
+            Excluir: function (url) {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    async: true,
+                    cache: false,
+                    beforeSend: function () {
+                        $('#myModal').modal('show');
+                    },
+                    success: function (data) {
+                        $('#mensagem').html(data);
+                    },
+                    complete: function () {
+                        $('#myModal').modal('hide');
+                    }
+                });
+            }
+        }
     </script>
 }
