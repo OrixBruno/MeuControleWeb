@@ -9,9 +9,13 @@ body {
 }
 
 .borda-1px {
-    border: 1px solid;
+    border: 1px solid #000000;
 }
-
+.rua{
+    float:left;
+    width:65%;
+    height: 100%;    
+}
 .numero {
     width:10%;
     height: 100%;
@@ -27,11 +31,19 @@ body {
 .nome {
     border-radius: 10px;
 }
-
 .nome-endereco-tamanho {
     height: 50%;
 }
-
+.formulario > div > h5, .formulario > div > div > h5{
+    text-align: center;
+    margin-top: 5px;
+    color:#000000;
+}
+.formulario > div > h6{
+    text-align: right;
+    margin-top: 5px;
+    color:#000000;
+}
 .observacao {
     height: 31%;
 }
@@ -41,7 +53,13 @@ body {
     height: 21%;
     margin: -16px 0 0px 0px;
 }
-
+.observacao > p{
+    font-size:9px;
+    color:#ff0000;
+    height:100%;
+    text-align:left;
+    margin-top:8px;
+}
 .formulario {
     width: 92%;
     height: 70%;
@@ -54,9 +72,10 @@ body {
 }
 
 .tamanho-impressao {
-    margin-left: 28px;
+    background-color:#ffffff;
+    margin-left: 80px;
     position: center;
-    border: 5px solid;
+    border: 5px solid #000000;
     width: 1160px;
     height: 390px;
     padding: 8px;
@@ -65,7 +84,7 @@ body {
 .tamanho-bloco {
     height: 100%;
     width: 49%;
-    border: 3px solid;
+    border: 3px solid #000000;
 }
 
 .dados {
@@ -80,7 +99,7 @@ body {
     height: 99%;
     width: 99%;
     margin: 2px;
-    border: 2px solid;
+    border: 2px solid #000000;
 }
 
     .mapa-foto > img {

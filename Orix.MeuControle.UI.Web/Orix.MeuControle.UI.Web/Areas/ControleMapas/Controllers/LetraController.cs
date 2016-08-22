@@ -4,8 +4,6 @@ using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
@@ -17,14 +15,47 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Letra/Adicionar
         public ActionResult Adicionar()
         {
+            TempData.Add("Action","Adicionar");
             return PartialView("_PartialLetraAdicionar");
         }
-
+        // GET: ControleMapas/Letra/Editar/1
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                TempData.Add("Action", "Editar");
+                return PartialView("_PartialLetraAdicionar", TypeAdapter.Adapt<LetraViewModel>(_negocios.Buscar(id)));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }            
+        }
+        // POST: ControleMapas/Letra/Editar
+        [HttpPost]
+        public ActionResult Editar(LetraViewModel letraTela)
+        {
+            try
+            {
+                _negocios.Editar(TypeAdapter.Adapt<LetraDomainModel>(letraTela));
+                ViewBag.Status = "success";
+                ViewBag.Message = "Letra atualizada com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
         // POST: ControleMapas/Letra/Adicionar
         [HttpPost]
         public ActionResult Adicionar(LetraViewModel letraTela)
         {
-            try
+            try            
             {
                 _negocios.Cadastrar(TypeAdapter.Adapt<LetraDomainModel>(letraTela));
                 ViewBag.Status = "success";
@@ -46,7 +77,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             return PartialView("_PartialLista", lista);
         }
 
-        // GET: ControleMapas/Letra/Excluir
+        // GET: ControleMapas/Letra/Excluir/5
         public ActionResult Excluir(Int32 id)
         {
             try

@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Configurações";
 }
-<div class="mensagem">
+<div id="mensagem">
 
 </div>
+
 <div id="partialLetra">
 
 </div>
@@ -22,85 +23,12 @@
 </div>
 
 <hr class="table-responsive hr-cinza-2px" />
+
 @section ChamadaAjax{
     <script>
         $(function () {
-            CarregarTabelas();
-
-            function CarregarTabelas() {
-                $.ajax(
-            {
-                type: 'GET',
-                url: '/ControleMapas/Letra/Lista',
-                dataType: 'html',
-                cache: false,
-                async: true,
-                beforeSend: function () {
-                    $('#myModal').modal('show');
-                },
-                success: function (data) {
-                    $('#partialLetra').html(data);
-                },
-                complete: function () {
-                    $('#myModal').modal('hide');
-                }
-            });
-
-                $.ajax(
-                    {
-                        type: 'GET',
-                        url: '/ControleMapas/Saida/Lista',
-                        dataType: 'html',
-                        cache: false,
-                        async: true,
-                        beforeSend: function () {
-                            $('#myModal').modal('show');
-                        },
-                        success: function (data) {
-                            $('#partialSaida').html(data);
-                        },
-                        complete: function () {
-                            $('#myModal').modal('hide');
-                        }
-                    });
-
-                $.ajax(
-                    {
-                        type: 'GET',
-                        url: '/ControleMapas/Territorio/Lista',
-                        dataType: 'html',
-                        cache: false,
-                        async: true,
-                        beforeSend: function () {
-                            $('#myModal').modal('show');
-                        },
-                        success: function (data) {
-                            $('#partialTerritorio').html(data);
-                        },
-                        complete: function () {
-                            $('#myModal').modal('hide');
-                        }
-                    });
-            }
-            function Excluir(url) {
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    async: true,
-                    cache: false,
-                    beforeSend: function () {
-                        $('#myModal').modal('show');
-                    },
-                    success: function (data) {
-                        $('#mensagem').html(data);
-                        CarregarTabelas();
-                    },
-                    complete: function () {
-                        $('#myModal').modal('hide');
-                    }
-                });
-            };
-            setInterval(CarregarTabelas, 30000);
+            Ajax.CarregarTabelas();
+            setInterval(Ajax.CarregarTabelas, 500000);
         });
     </script>
 }

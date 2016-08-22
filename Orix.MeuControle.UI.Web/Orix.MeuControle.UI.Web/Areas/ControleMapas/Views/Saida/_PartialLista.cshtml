@@ -19,8 +19,8 @@
                     <td class="col-md-1">@saida.ID</td>
                     <td>@saida.Local</td>
                     <td>@saida.Logradouro</td>
-                    <td><a class="glyphicon glyphicon-pencil" href="#"></a></td>
-                    <td><a class="glyphicon glyphicon-trash" onclick="Excluir('');"></a></td>
+                    <td><a class="glyphicon glyphicon-pencil" onclick="Ajax.Editar('/ControleMapas/Saida/Editar/@saida.ID');"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="Ajax.Excluir('/ControleMapas/Saida/Excluir/@saida.ID');"></a></td>
                 </tr>
             }
         </tbody>

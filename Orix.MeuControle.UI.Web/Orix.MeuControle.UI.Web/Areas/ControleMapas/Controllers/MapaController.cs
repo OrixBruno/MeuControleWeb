@@ -42,10 +42,19 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             CarregarSelectLists();
             return View();
         }
-        public ActionResult Editar()
+        public ActionResult Editar(int id)
         {
             CarregarSelectLists();
-            return View();
+            try
+            {
+                return View(TypeAdapter.Adapt<MapaViewModel>(_negocios.Buscar(id)));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         public ActionResult Excluir(Int32 id)
         {

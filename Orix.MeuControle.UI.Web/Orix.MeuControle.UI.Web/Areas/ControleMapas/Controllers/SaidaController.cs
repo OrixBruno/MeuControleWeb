@@ -4,8 +4,6 @@ using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
@@ -55,47 +53,56 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             var lista = TypeAdapter.Adapt<List<SaidaViewModel>>(_negocios.Listar());
             return PartialView("_PartialLista", lista);
         }
-        // GET: ControleMapas/Saida/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ControleMapas/Saida/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        // GET: ControleMapas/Saida/Editar/5
+        public ActionResult Editar(int id)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                TempData.Add("Action", "Editar");
+                return PartialView("_PartialSaidaAdicionar", TypeAdapter.Adapt<SaidaViewModel>(_negocios.Buscar(id)));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
             }
         }
 
-        // GET: ControleMapas/Saida/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ControleMapas/Saida/Delete/5
+        // POST: ControleMapas/Saida/Editar/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Editar(SaidaViewModel saidaTela)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _negocios.Editar(TypeAdapter.Adapt<SaidaDomainModel>(saidaTela));
+                ViewBag.Status = "success";
+                ViewBag.Message = "Saída atualizada com sucesso!";
+                return PartialView("_PartialAlerta");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
+
+        // GET: ControleMapas/Saida/Excluir/5
+        public ActionResult Excluir(int id)
+        {
+            try
+            {
+                _negocios.Excluir(id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Saída excluida com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
             }
         }
     }

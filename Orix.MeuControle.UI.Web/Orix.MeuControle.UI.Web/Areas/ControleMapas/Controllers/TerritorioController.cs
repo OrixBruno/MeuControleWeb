@@ -4,8 +4,6 @@ using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
@@ -13,11 +11,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
     public class TerritorioController : Controller
     {
         TerritorioBusiness _negocios = new TerritorioBusiness();
-        // GET: ControleMapas/Territorio
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         // GET: ControleMapas/Territorio/Details/5
         public ActionResult Details(int id)
@@ -28,6 +21,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Territorio/Adicionar
         public ActionResult Adicionar()
         {
+            TempData.Add("Action", "Adicionar");
             return PartialView("_PartialTerritorioAdicionar");
         }
 
@@ -55,47 +49,56 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             var lista = TypeAdapter.Adapt<List<TerritorioViewModel>>(_negocios.Listar());
             return PartialView("_PartialLista", lista);
         }
-        // GET: ControleMapas/Territorio/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ControleMapas/Territorio/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        // GET: ControleMapas/Territorio/Editar/5
+        public ActionResult Editar(int id)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                TempData.Add("Action", "Editar");
+                return PartialView("_PartialTerritorioAdicionar", TypeAdapter.Adapt<TerritorioViewModel>(_negocios.Buscar(id)));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
             }
         }
 
-        // GET: ControleMapas/Territorio/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ControleMapas/Territorio/Delete/5
+        // POST: ControleMapas/Territorio/Editar/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Editar(TerritorioViewModel territorioTela)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _negocios.Editar(TypeAdapter.Adapt<TerritorioDomainModel>(territorioTela));
+                ViewBag.Status = "success";
+                ViewBag.Message = "Território atualizado com sucesso!";
+                return PartialView("_PartialAlerta");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
+
+        // GET: ControleMapas/Territorio/Excluir/5
+        public ActionResult Excluir(Int32 id)
+        {
+            try
+            {
+                _negocios.Excluir(id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Território excluido com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
             }
         }
     }

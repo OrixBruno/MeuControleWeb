@@ -7,7 +7,7 @@
     @Html.Partial("_PartialEstilos")
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/mapa.css" rel="stylesheet" />
-    <script src="~/Scripts/funcoes.js"></script>
+
 </head>
 <body>
     <header>
@@ -50,19 +50,19 @@
                                         <li>
                                             <a class="trigger right-caret">Letras dos Mapas</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Letra/Adicionar')">Adicionar</a></li>
+                                                <li><a href="#" onclick="Ajax.Adicionar('/ControleMapas/Letra/Adicionar')">Adicionar</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="trigger right-caret">Saídas</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Saida/Adicionar')">Adicionar</a></li>
+                                                <li><a href="#" onclick="Ajax.Adicionar('/ControleMapas/Saida/Adicionar')">Adicionar</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="trigger right-caret">Territórios</a>
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a href="#" onclick="ModalAdicionar('/ControleMapas/Territorio/Adicionar')">Novo</a></li>
+                                                <li><a href="#" onclick="Ajax.Adicionar('/ControleMapas/Territorio/Adicionar')">Novo</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -131,6 +131,7 @@
             }
         });
 
+        //Configuração do Menu Cascata
         $(function () {
             $(".dropdown-menu > li > a.trigger").on("click", function (e) {
                 var current = $(this).next();
@@ -148,28 +149,6 @@
                 root.find('.sub-menu:visible').hide();
             });
         });
-
-        function ModalAdicionar(url) {
-            $.ajax(
-                    {
-                        type: 'GET',
-                        url: url,
-                        dataType: 'html',
-                        cache: false,
-                        async: true,
-                        beforeSend: function () {
-                            $('#myModal').modal('show');
-                        },
-                        success: function (data) {
-                            $('#tituloFooter').text("Adicionando ...");
-                            $('#conteudoModal').html(data);
-                            $('#modalConfiguracao').modal('show');
-                        },
-                        complete: function () {
-                            $('#myModal').modal('hide');
-                        }
-                    });
-        };
 
         $('.showModal').click(function () {
             $('#myModal').modal('show');

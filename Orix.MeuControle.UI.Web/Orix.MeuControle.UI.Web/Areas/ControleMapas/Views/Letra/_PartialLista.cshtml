@@ -19,8 +19,8 @@
                     <td class="col-md-1">@letra.ID</td>
                     <td>@letra.Letra</td>
                     <td>@letra.Descricao</td>
-                    <td><a class="glyphicon glyphicon-pencil" href="#"></a></td>
-                    <td><a class="glyphicon glyphicon-trash" onclick="Chamado('/ControleMapas/Letra/Excluir/@letra.ID');"></a></td>
+                    <td><a class="glyphicon glyphicon-pencil" onclick="Ajax.Editar('/ControleMapas/Letra/Editar/@letra.ID');"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="Ajax.Excluir('/ControleMapas/Letra/Excluir/@letra.ID');"></a></td>
                 </tr>
             }
         </tbody>
@@ -32,12 +32,3 @@
     </table>
 </div>
 
-@section xD{
-    <script>
-        $(function () {
-            function Chamado(url) {
-                alert(url);
-            }
-        });
-    </script>
-}

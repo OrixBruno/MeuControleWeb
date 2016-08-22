@@ -1,41 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Orix.MeuControle.Domain.Mapa;
-using Orix.MeuControle.DataAccess;
 using System.Linq;
-using System.Data.Entity;
+using Orix.MeuControle.Repository.Implementation.Base;
 
 namespace Orix.MeuControle.Repository.Implementation
 {
-    public class TerritorioRepository : Contracts.ITerritorioRepository
+    public class TerritorioRepository : BaseRepository<TerritorioDomainModel>, Contracts.ITerritorioRepository
     {
-        Conexao _conexao = new Conexao();
-        public TerritorioDomainModel Buscar(Int32 id)
-        {
-            return _conexao.Territorio.Find(id);
-        }
 
-        public void Cadastrar(TerritorioDomainModel dadosTela)
+        public new List<TerritorioDomainModel> Listar()
         {
-            _conexao.Territorio.Add(dadosTela);
-            _conexao.SaveChanges();
-        }
-
-        public void Editar(TerritorioDomainModel dadosTela)
-        {
-            _conexao.Entry(dadosTela).State = EntityState.Modified;
-            _conexao.SaveChanges();
-        }
-
-        public void Excluir(Int32 id)
-        {
-            _conexao.Territorio.Remove(_conexao.Territorio.Find(id));
-            _conexao.SaveChanges();
-        }
-
-        public List<TerritorioDomainModel> Listar()
-        {
-            return _conexao.Territorio.OrderBy(x => x.Nome).ToList();
+            return base.Listar().OrderBy(x => x.Nome).ToList();
         }
     }
 }

@@ -3,7 +3,7 @@
 
 </div>
 
-@using (Ajax.BeginForm("Adicionar", "Saida", new AjaxOptions
+@using (Ajax.BeginForm((String)TempData["Action"], "Saida", new AjaxOptions
 {
     OnBegin = "Carregando",
     OnComplete = "Concluido",
@@ -46,6 +46,7 @@
 <script>
     function Sucesso(resposta) {
         document.getElementById('formAdicionar').reset();
+        Ajax.CarregarTabelas();
     }
     function Error(resposta) {
 

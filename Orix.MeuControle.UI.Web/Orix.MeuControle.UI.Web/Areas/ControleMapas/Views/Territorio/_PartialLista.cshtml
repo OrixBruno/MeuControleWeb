@@ -17,8 +17,8 @@
                 <tr>
                     <td class="col-md-1">@territorio.ID</td>
                     <td>@territorio.Nome</td>
-                    <td><a class="glyphicon glyphicon-pencil" href="#"></a></td>
-                    <td><a class="glyphicon glyphicon-trash" onclick="Excluir();"></a></td>
+                    <td><a class="glyphicon glyphicon-pencil" onclick="Ajax.Editar('/ControleMapas/Territorio/Editar/@territorio.ID');"></a></td>
+                    <td><a class="glyphicon glyphicon-trash" onclick="Ajax.Excluir('/ControleMapas/Territorio/Excluir/@territorio.ID');"></a></td>
                 </tr>
             }
         </tbody>

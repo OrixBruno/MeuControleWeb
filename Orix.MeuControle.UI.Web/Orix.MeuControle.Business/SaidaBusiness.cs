@@ -1,10 +1,6 @@
 ﻿using Orix.MeuControle.Domain.Mapa;
 using Orix.MeuControle.Repository.Implementation;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orix.MeuControle.Business
 {
@@ -14,7 +10,7 @@ namespace Orix.MeuControle.Business
 
         public SaidaDomainModel Buscar(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Buscar(id);
         }
 
         public void Cadastrar(SaidaDomainModel dadosTela)
@@ -24,12 +20,12 @@ namespace Orix.MeuControle.Business
 
         public void Editar(SaidaDomainModel dadosTela)
         {
-            throw new NotImplementedException();
+            _repository.Editar(dadosTela);
         }
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            _repository.Excluir(id);
         }
 
         public List<SaidaDomainModel> Listar()

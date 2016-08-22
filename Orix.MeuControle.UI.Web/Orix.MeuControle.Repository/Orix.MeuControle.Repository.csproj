@@ -57,6 +57,7 @@
     <Compile Include="Contracts\IPessoaRepository.cs" />
     <Compile Include="Contracts\ISaidaRepository.cs" />
     <Compile Include="Contracts\ITerritorioRepository.cs" />
+    <Compile Include="Implementation\Base\BaseRepository.cs" />
     <Compile Include="Implementation\LetraRepository.cs" />
     <Compile Include="Implementation\MapaRepository.cs" />
     <Compile Include="Implementation\PessoaRepository.cs" />
