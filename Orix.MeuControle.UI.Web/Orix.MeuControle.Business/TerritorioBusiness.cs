@@ -14,7 +14,7 @@ namespace Orix.MeuControle.Business
 
         public TerritorioDomainModel Buscar(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Buscar(id);
         }
 
         public void Cadastrar(TerritorioDomainModel dadosTela)
@@ -24,12 +24,12 @@ namespace Orix.MeuControle.Business
 
         public void Editar(TerritorioDomainModel dadosTela)
         {
-            throw new NotImplementedException();
+            _repository.Editar(dadosTela);
         }
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            _repository.Excluir(id);
         }
 
         public List<TerritorioDomainModel> Listar()

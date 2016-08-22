@@ -4,39 +4,15 @@ using System.Linq;
 using Orix.MeuControle.Domain.Surdos;
 using Orix.MeuControle.DataAccess;
 using System.Data.Entity;
+using Orix.MeuControle.Repository.Implementation.Base;
 
 namespace Orix.MeuControle.Repository.Implementation
 {
-    public class PessoaRepository : IPessoaRepository
+    public class PessoaRepository : BaseRepository<PessoaDomainModel>, IPessoaRepository
     {
-        Conexao _conexao = new Conexao();
-
-        public PessoaDomainModel Buscar(int id)
+        public new List<PessoaDomainModel> Listar()
         {
-            return _conexao.Pessoa.Find(id);
-        }
-
-        public void Cadastrar(PessoaDomainModel pessoaTela)
-        {
-            _conexao.Pessoa.Add(pessoaTela);
-            _conexao.SaveChanges();
-        }
-
-        public void Editar(PessoaDomainModel pessoaTela)
-        {
-            _conexao.Entry(pessoaTela).State = EntityState.Modified;
-            _conexao.SaveChanges();
-        }
-
-        public void Excluir(int id)
-        {
-            _conexao.Pessoa.Remove(_conexao.Pessoa.Find(id));
-            _conexao.SaveChanges();
-        }
-
-        public List<PessoaDomainModel> Listar()
-        {
-            return _conexao.Pessoa.OrderBy(x => x.Nome).ToList();
+            return base.Listar().OrderBy(x => x.Nome).ToList();
         }
     }
 }

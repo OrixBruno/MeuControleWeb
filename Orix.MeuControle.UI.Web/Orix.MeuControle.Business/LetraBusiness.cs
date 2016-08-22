@@ -32,7 +32,7 @@ namespace Orix.MeuControle.Business
 
         public LetraDomainModel Buscar(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Buscar(id);
         }
     }
 }

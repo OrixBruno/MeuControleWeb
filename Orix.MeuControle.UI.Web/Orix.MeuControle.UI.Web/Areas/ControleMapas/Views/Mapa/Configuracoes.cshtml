@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Configurações";
 }
-<div class="mensagem">
+<div id="mensagem">
 
 </div>
+
 <div id="partialLetra">
 
 </div>
@@ -22,6 +23,7 @@
 </div>
 
 <hr class="table-responsive hr-cinza-2px" />
+
 @section ChamadaAjax{
     <script>
         $(function () {
@@ -102,5 +104,25 @@
             };
             setInterval(CarregarTabelas, 30000);
         });
+
+        var ajax = {
+            Excluir: function (url) {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    async: true,
+                    cache: false,
+                    beforeSend: function () {
+                        $('#myModal').modal('show');
+                    },
+                    success: function (data) {
+                        $('#mensagem').html(data);
+                    },
+                    complete: function () {
+                        $('#myModal').modal('hide');
+                    }
+                });
+            }
+        }
     </script>
 }
