@@ -20,5 +20,6 @@ namespace Orix.MeuControle.Domain.Mapa
         public virtual LetraDomainModel Letra { get; set; }
         public virtual SaidaDomainModel Saida { get; set; }
         public virtual TerritorioDomainModel Territorio { get; set; }
+        public virtual FotoDomainModel Foto { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Orix.MeuControle.Domain.Mapa;
 using System.IO;
 using Orix.MeuControle.UI.Web.json;
 using Newtonsoft.Json;
+using System.Web;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
@@ -35,7 +36,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         }
         #endregion
 
-        #region MAPA
         #region GET
         public ActionResult Adicionar()
         {
@@ -80,7 +80,9 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         {
             try
             {
-                _negocios.Adicionar(TypeAdapter.Adapt<MapaDomainModel>(mapaTela));
+                //TempData.Add("MapaID",_negocios.Adicionar(TypeAdapter.Adapt<MapaDomainModel>(mapaTela)).ID);
+
+                ViewBag.MapaID = 1;
                 ViewBag.Status = "success";
                 ViewBag.Message = "Mapa cadastrado com sucesso!";
                 return PartialView("_PartialAlerta");
@@ -91,6 +93,14 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
                 ViewBag.Status = "danger";
                 return PartialView("_PartialAlerta");
             }
+        }
+        [HttpPost]
+        public ActionResult AdicionarImagem()
+        {
+            var file = Request.Files["Imagem"];
+            var id = Request.Form["Id"];
+
+            return null;
         }
         [HttpPost]
         public ActionResult Editar(MapaViewModel mapaTela)
@@ -108,7 +118,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
                 return PartialView("_PartialAlerta");
             }
         }
-        #endregion
         #endregion
 
         #region IMPRESSAO

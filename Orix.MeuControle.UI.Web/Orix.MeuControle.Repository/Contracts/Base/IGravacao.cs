@@ -4,7 +4,7 @@ namespace Orix.MeuControle.Repository.Contracts.Base
 {
     interface IGravacao<TClasse>
     {
-        void Cadastrar(TClasse dadosTela);
+        TClasse Cadastrar(TClasse dadosTela);
 
         void Editar(TClasse dadosTela);
 

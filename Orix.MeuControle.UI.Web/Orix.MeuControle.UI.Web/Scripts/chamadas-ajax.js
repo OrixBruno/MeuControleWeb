@@ -1,5 +1,28 @@
 ﻿
 var Ajax = {
+    id : "",
+    Imagem: function (url) {
+        var data = new FormData();
+        var files = $("#uploadImage").get(0).files;
+        if (files.length > 0) {
+            data.append("Id", id);
+            data.append("Imagem", files[0]);
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                
+            },
+            error: function (er) {
+                
+            }
+
+        });
+    },
     Adicionar: function (url) {
         $.ajax(
             {

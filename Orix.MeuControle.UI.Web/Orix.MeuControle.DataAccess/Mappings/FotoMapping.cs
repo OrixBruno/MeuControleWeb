@@ -9,13 +9,12 @@ namespace Orix.MeuControle.DataAccess.Mappings
         {
             ToTable("TB_FOTO");
 
-            HasKey(x => x.ID);
+            HasKey(x => x.ID)
+                .HasRequired(x => x.Mapa)
+                .WithOptional(x => x.Foto);
 
             Property(x => x.Descricao).HasMaxLength(300).HasColumnName("DS_FOTO");
-            Property(x => x.URL).HasMaxLength(500).HasColumnName("DS_URL");
-
-            #warning CONTINUAR MAPEAMENTO FOTO
-
+            Property(x => x.URL).HasMaxLength(500).HasColumnName("DS_URL");         
         }
     }
 }

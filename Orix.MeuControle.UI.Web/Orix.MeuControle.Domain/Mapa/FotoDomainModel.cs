@@ -10,10 +10,7 @@ namespace Orix.MeuControle.Domain.Mapa
     {
         public Int32 ID { get; set; }
         public String URL { get; set; }
-        public Int32 IdMapa { get; set; }
         public String Descricao { get; set; }
-
-        public Byte ImgByte { get; set; }
 
         public virtual MapaDomainModel Mapa { get; set; }
     }

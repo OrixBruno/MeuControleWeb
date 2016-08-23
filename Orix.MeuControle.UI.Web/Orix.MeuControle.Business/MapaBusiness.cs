@@ -9,9 +9,9 @@ namespace Orix.MeuControle.Business
     {
         MapaRepository _repository = new MapaRepository();
 
-        public void Adicionar(MapaDomainModel mapaDomainModel)
+        public MapaDomainModel Adicionar(MapaDomainModel mapaDomainModel)
         {
-            _repository.Cadastrar(mapaDomainModel);
+            return _repository.Cadastrar(mapaDomainModel);
         }
 
         public MapaDomainModel Buscar(int id)

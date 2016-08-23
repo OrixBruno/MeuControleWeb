@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels
 {
@@ -7,7 +8,9 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels
         public Int32 ID { get; set; }
         public Int32 Numero { get; set; }
         public String Cor { get; set; }
+
         public String UrlFoto { get; set; }
+        public HttpPostedFile FileFoto { get; set; }
 
         public Int32 IdLetra { get; set; }
         public Int32 IdSaida { get; set; }
