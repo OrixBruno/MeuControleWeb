@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using FastMapper;
-using Orix.MeuControle.Business;
-using Orix.MeuControle.Domain.Surdos;
+using RestSharp;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
@@ -15,8 +14,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 
     public class SurdoController : Controller
     {
-        SurdoBusiness _negocios = new SurdoBusiness();
-
+        RestApi<SurdoViewModel> _restSurdo = new RestApi<SurdoViewModel>();
         #region METODOS
         private void ListaGeneros()
         {
@@ -53,19 +51,9 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpGet]
         public ActionResult Excluir(Int32 id)
         {
-            try
-            {
-                _negocios.Excluir(id);
-                ViewBag.Status = "success";
-                ViewBag.Message = "Surdo excluido com sucesso!";
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
+            ViewBag.Status = "success";
+            ViewBag.Message = "Surdo excluido com sucesso!" + _restSurdo.Request(null, Method.DELETE, "Surdo/" + id);
+            return PartialView("_PartialAlerta");
         }
         // GET: ControleMapas/Surdo/Adicionar
         public ActionResult Adicionar()
@@ -82,62 +70,31 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Surdo/ObterListaSurdos
         public ActionResult ObterListaSurdos()
         {
-            return PartialView("_PartialSurdoLista", TypeAdapter.Adapt<List<PessoaViewModel>>(_negocios.Lista()));
+            return PartialView("_PartialSurdoLista", _restSurdo.GetLista("Surdo"));
         }
 
         // GET: ControleMapas/Surdo/Editar
         public ActionResult Editar(Int32 id)
         {
             ListaGeneros();
-            try
-            {
-                return View(TypeAdapter.Adapt<PessoaViewModel>(_negocios.Buscar(id)));
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return View();
-            }
+            return View(_restSurdo.GetObjeto("Surdo"));
         }
         #endregion
 
         #region POST
         [HttpPost]
-        public ActionResult Adicionar(PessoaViewModel dadoTela)
+        public ActionResult Adicionar(SurdoViewModel dadoTela)
         {
-            try
-            {
-                _negocios.Cadastrar(TypeAdapter.Adapt<PessoaDomainModel>(dadoTela));
-                ViewBag.Status = "success";
-                ViewBag.Message = "Surdo cadastrado com sucesso!";
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
+            ViewBag.Status = "success";
+            ViewBag.Message = "Surdo cadastrado com sucesso!" + _restSurdo.Request(dadoTela, Method.POST, "Surdo");
+            return PartialView("_PartialAlerta");
         }
         [HttpPost]
-        public ActionResult Editar(PessoaViewModel dadoTela)
+        public ActionResult Editar(SurdoViewModel dadoTela)
         {
-            try
-            {
-                _negocios.Editar(TypeAdapter.Adapt<PessoaDomainModel>(dadoTela));
-                ViewBag.Message = "Surdo atualizado com sucesso!";
-                ViewBag.Status = "success";
-
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-
-                return PartialView("_PartialAlerta");
-            }
+            ViewBag.Message = "Surdo atualizado com sucesso!" + _restSurdo.Request(dadoTela, Method.PUT, "Surdo");
+            ViewBag.Status = "success";
+            return PartialView("_PartialAlerta");
         }
         #endregion
     }

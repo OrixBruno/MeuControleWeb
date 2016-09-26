@@ -60,6 +60,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -188,8 +192,6 @@
     <Content Include="Areas\ControleMapas\Views\Mapa\Adicionar.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\_PartialForm.cshtml" />
     <Content Include="Areas\ControleMapas\Views\Mapa\Editar.cshtml" />
-    <Content Include="json\City.json" />
-    <Content Include="json\Estate.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\chamadas-ajax.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -219,13 +221,13 @@
     <Compile Include="Areas\ControleMapas\ViewModels\MapaViewModel.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\SaidaViewModel.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\TerritorioViewModel.cs" />
+    <Compile Include="RestApi.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="json\JsonObjetos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\PessoaViewModel.cs" />
+    <Compile Include="ViewModels\SurdoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -248,16 +250,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Principal\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Orix.MeuControle.Business\Orix.MeuControle.Business.csproj">
-      <Project>{a0fee4f7-cf27-491f-a9ca-5ba6da49668b}</Project>
-      <Name>Orix.MeuControle.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Orix.MeuControle.Domain\Orix.MeuControle.Domain.csproj">
-      <Project>{0703cfa7-19aa-4ca0-89a7-aadeb80e4f0a}</Project>
-      <Name>Orix.MeuControle.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

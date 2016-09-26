@@ -1,39 +1,40 @@
 ﻿using Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels;
-using Orix.MeuControle.Business;
 using System;
 using System.Web.Mvc;
 using FastMapper;
-using Orix.MeuControle.Domain.Mapa;
 using System.IO;
-using Orix.MeuControle.UI.Web.json;
 using Newtonsoft.Json;
 using System.Web;
+using RestSharp;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
     public class MapaController : Controller
     {
-        MapaBusiness _negocios = new MapaBusiness();
+        RestApi<LetraViewModel> _letraRest = new RestApi<LetraViewModel>();
+        RestApi<SaidaViewModel> _saidaRest = new RestApi<SaidaViewModel>();
+        RestApi<TerritorioViewModel> _territorioRest = new RestApi<TerritorioViewModel>();
+        RestApi<MapaViewModel> _mapaRest = new RestApi<MapaViewModel>();
 
         #region METODOS
         private void CarregarSelectLists()
         {
-            ViewBag.SelectLetras = new SelectList(new LetraBusiness().Listar(), "ID", "Letra", "Selecione...");
-            ViewBag.SelectSaidas = new SelectList(new SaidaBusiness().Listar(), "ID", "Local", "Selecione...");
-            ViewBag.SelectTerritorios = new SelectList(new TerritorioBusiness().Listar(), "ID", "Nome", "Selecione...");
+            ViewBag.SelectLetras = new SelectList(_letraRest.GetLista("Letra"), "ID", "Letra", "Selecione...");
+            ViewBag.SelectSaidas = new SelectList(_saidaRest.GetLista("Saida"), "ID", "Local", "Selecione...");
+            ViewBag.SelectTerritorios = new SelectList(_territorioRest.GetLista("Territorio"), "ID", "Nome", "Selecione...");
         }
-        private void CarregarEstadosCidades()
-        {
-            using (StreamReader sr = new StreamReader(Server.MapPath("~/json/City.json")))
-            {
-                var listaEstadosCidades = JsonConvert.DeserializeObject<ListaEstadosCidades>(sr.ReadToEnd());
+        //private void CarregarEstadosCidades()
+        //{
+        //    using (StreamReader sr = new StreamReader(Server.MapPath("~/json/City.json")))
+        //    {
+        //        var listaEstadosCidades = JsonConvert.DeserializeObject<ListaEstadosCidades>(sr.ReadToEnd());
 
-                using (StreamReader sr2 = new StreamReader(Server.MapPath("~/json/Estate.json")))
-                {
-                    var estados = JsonConvert.DeserializeObject<ListaEstados>(sr2.ReadToEnd());
-                }
-            }
-        }
+        //        using (StreamReader sr2 = new StreamReader(Server.MapPath("~/json/Estate.json")))
+        //        {
+        //            var estados = JsonConvert.DeserializeObject<ListaEstados>(sr2.ReadToEnd());
+        //        }
+        //    }
+        //}
         #endregion
 
         #region GET
@@ -42,35 +43,18 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             CarregarSelectLists();
             return View();
         }
-        public ActionResult Editar(int id)
+        public ActionResult Editar(Int32 id)
         {
             CarregarSelectLists();
-            try
-            {
-                return View(TypeAdapter.Adapt<MapaViewModel>(_negocios.Buscar(id)));
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
+            return View(_mapaRest.GetObjeto("Mapa/" + id));
+
         }
         public ActionResult Excluir(Int32 id)
         {
-            try
-            {
-                _negocios.Excluir(id);
-                ViewBag.Status = "success";
-                ViewBag.Message = "Mapa excluido com sucesso!";
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
+            ViewBag.Message = "Mapa excluido com sucesso!" + _mapaRest.Request(null,Method.DELETE, "Mapa/" + id);
+            ViewBag.Status = "success";
+
+            return PartialView("_PartialAlerta");
         }
         #endregion
 
@@ -78,21 +62,9 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpPost]
         public ActionResult Adicionar(MapaViewModel mapaTela)
         {
-            try
-            {
-                //TempData.Add("MapaID",_negocios.Adicionar(TypeAdapter.Adapt<MapaDomainModel>(mapaTela)).ID);
-
-                ViewBag.MapaID = 1;
-                ViewBag.Status = "success";
-                ViewBag.Message = "Mapa cadastrado com sucesso!";
-                return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
+            ViewBag.Status = "success";
+            ViewBag.Message = "Mapa cadastrado com sucesso!" + _mapaRest.Request(mapaTela,Method.POST,"Mapa");
+            return PartialView("_PartialAlerta");
         }
         [HttpPost]
         public ActionResult AdicionarImagem()
@@ -105,18 +77,10 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpPost]
         public ActionResult Editar(MapaViewModel mapaTela)
         {
-            try
-            {
+                _mapaRest.Request(mapaTela,Method.PUT, "Mapa");
                 ViewBag.Status = "success";
-                ViewBag.Message = "Surdo atualizado com sucesso!";
+                ViewBag.Message = "Mapa atualizado com sucesso!";
                 return PartialView("_PartialAlerta");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-                ViewBag.Status = "danger";
-                return PartialView("_PartialAlerta");
-            }
         }
         #endregion
 

@@ -10,7 +10,5 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels
         public String Local { get; set; }
 
         public String Logradouro { get; set; }
-
-        public virtual ICollection<MapaViewModel> ListaMapa { get; set; }
     }
 }

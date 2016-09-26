@@ -8,7 +8,5 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.ViewModels
         public Int32 ID { get; set; }
         public String Letra { get; set; }
         public String Descricao { get; set; }
-
-        public virtual ICollection<MapaViewModel> ListaMapa { get; set; }
     }
 }
