@@ -10,7 +10,7 @@ namespace Orix.MeuControle.UI.Web
     {
         private RestClient _cliente;
         private const String URL_BASE = "http://www.apiprojetos.somee.com/api/v1/";
-
+#warning http://weblogs.asp.net/andrebaltieri/implementando-bearer-autentication-com-webapi-e-owin CONTINUACAO
         //METODOS DE REQUEST
         //GET --------------->>>>>>
         public TClasse GetObjeto(String action)
