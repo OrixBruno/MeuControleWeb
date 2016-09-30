@@ -15,10 +15,27 @@ function AuthService($http, $localStorage, $q) {
             $localStorage.token = token;
         },
         signin: function (data) {
-            return $http.post('http://www.apiprojetos.somee.com/token', data);
+            $http({
+                method: 'POST',
+                url: 'http://www.apiprojetos.somee.com/token',
+                data: data,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                }
+            }).success(function (data, status, headers, config) {
+                $localStorage.token = data.access_token;
+                return status;
+
+            }).error(function (data, status, headers, config) {
+                
+            });
         },
         signup: function (data) {
-            $http.post('http://www.apiprojetos.somee.com/api/v1/signup', data);
+            
         },
         logout: function (data) {
             delete $localStorage.token;

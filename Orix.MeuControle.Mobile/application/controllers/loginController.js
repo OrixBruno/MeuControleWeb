@@ -5,23 +5,10 @@
     $scope.usuario = {}
 
     $scope.login = function () {
-        AuthService.signin($scope.usuario)
-        .success(function (token) {
-            AuthService.setToken(token);
-            $location.path("/home");
-        })
-        .error(function () {
-            $timeout(function () {
-                $ionicLoading.hide();
-
-                $ionicPopup.alert({
-                    title: "Error",
-                    template: "Usuário ou senha inválidos!"
-                });
-            }, 2000);
-
+        var status = AuthService.signin($scope.usuario)
+        if (status == 200) {
             $location.path("/login");
-        });
+        }        
     }
 
 
