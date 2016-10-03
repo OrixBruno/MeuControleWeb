@@ -1,15 +1,14 @@
-﻿app.controller('loginController', function ($scope, $ionicLoading, AuthService, $timeout, $location) {
-    $ionicLoading.show({
-        template: "Aguarde..."
-    });
-    $scope.usuario = {}
+﻿app.controller('loginController', function ($scope, $ionicLoading, AuthService, $timeout,$ionicPopup) {
+
+    $scope.usuario = {
+        grant_type : 'password',
+        username:'',
+        password:''
+    };
 
     $scope.login = function () {
-        var status = AuthService.signin($scope.usuario)
-        if (status == 200) {
-            $location.path("/login");
-        }        
-    }
+        AuthService.signin($scope.usuario);  
+    };
 
 
     $ionicLoading.hide();

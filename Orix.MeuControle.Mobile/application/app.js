@@ -1,12 +1,14 @@
 ﻿var app = angular.module("MEUCONTROLE", ['ionic', 'ngRoute', 'ngStorage'])
     .config(function ($routeProvider) {
         $routeProvider.when('/', { templateUrl: 'application/views/home/home.html', controller: 'homeController' })
-                      .when('/login', { templateUrl: 'application/views/login/login.html', controller: 'loginController' })
+                      .when('/login', { templateUrl: 'application/views/login/login.html', controller: 'loginController', authorize:true})
                       .when('/surdo/listar', { templateUrl: 'application/views/surdo/listar.html', controller: 'surdoController' })
+                      .when('/surdo/dados/:Codigo', { templateUrl: 'application/views/surdo/dados.html', controller: 'surdoController' })
+                      .when('/territorio/listar', { templateUrl: 'application/views/territorio/listar.html', controller: 'territorioController' })
         $routeProvider.otherwise({ redirectTo: "/" });
-    });
+    }); 
 
-function AuthService($http, $localStorage, $q) {
+function AuthService($http, $localStorage, $q, $ionicPopup,$location) {
     return {
         getToken: function () {
             return $localStorage.token;
@@ -15,9 +17,10 @@ function AuthService($http, $localStorage, $q) {
             $localStorage.token = token;
         },
         signin: function (data) {
+            //http://www.apiprojetos.somee.com/token
             $http({
                 method: 'POST',
-                url: 'http://www.apiprojetos.somee.com/token',
+                url: 'http://localhost:4644/token',
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 transformRequest: function (obj) {
@@ -27,11 +30,21 @@ function AuthService($http, $localStorage, $q) {
                     return str.join("&");
                 }
             }).success(function (data, status, headers, config) {
-                $localStorage.token = data.access_token;
-                return status;
-
+                if (status == 200) {
+                    $localStorage.token = data.access_token;
+                    $ionicPopup.alert({
+                         title: 'Token',
+                         template: 'Token adicionado com sucesso.'
+                    });
+                    $location.path('/');
+                };
             }).error(function (data, status, headers, config) {
-                
+                if (status == 503) {
+                    $ionicPopup.alert({
+                         title: 'Error',
+                         template: 'Serviço indisponivel. Status: '+status
+                    });
+                }
             });
         },
         signup: function (data) {
@@ -43,12 +56,12 @@ function AuthService($http, $localStorage, $q) {
         }
     }
 }
-function AuthInterceptor($location, AuthService, $q) {
+function AuthInterceptor($localStorage, $location, AuthService, $q) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
-            if (AuthService.getToken) {
-                config.headers['Authorization'] = 'Bearer ' + AuthService.getToken;
+            if ($localStorage.token) {
+                config.headers['Authorization'] = 'Bearer ' + $localStorage.token;
             }
 
             return config;

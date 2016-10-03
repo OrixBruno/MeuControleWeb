@@ -1,4 +1,4 @@
-﻿<div class="bar bar-header item-input-inset">
+<div class="bar bar-header item-input-inset">
   <label class="item-input-wrapper">
     <i class="icon ion-ios-search placeholder-icon"></i>
     <input type="search" ng-change="BuscaPorNome()" ng-model="nome" placeholder="Buscar">
@@ -9,7 +9,7 @@
 </div>
 
 <ion-list>
-  <ion-item ng-repeat="surdo in surdosLista" href="#/surdo/dados/1">
-    {{surdo.Nome}}
+  <ion-item ng-repeat="territorio in territorios" href="#/territorio/dados/{{territorio.ID}}">
+    {{territorio.Nome}}
   </ion-item>
 </ion-list>

@@ -6,17 +6,18 @@
 </head>
 <body ng-app="MEUCONTROLE">
     <header>
-        <!-- MENU LATERAL ESQUERDA -->
-        <!--<ion-side-menus enable-menu-with-back-views="false">
-            <ion-side-menu-content>
-                <ion-nav-bar class="bar-stable">
-                    <ion-nav-back-button>
-                    </ion-nav-back-button>
 
-                    <ion-nav-buttons side="left">
-                        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-                    </ion-nav-buttons>
-                </ion-nav-bar>
+    </header>
+        <section>
+        <ion-side-menus enable-menu-with-back-views="false">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+            <ion-side-menu-content class="has-header has-footer" ng-view>
+  
             </ion-side-menu-content>
 
             <ion-side-menu side="left">
@@ -29,7 +30,13 @@
                             Surdos
                         </ion-item>
                         <ion-item menu-close href="#/">
-                            Mapa
+                            Mapa - Letras
+                        </ion-item>
+                        <ion-item menu-close href="#/territorio/listar">
+                            Mapa - Territórios
+                        </ion-item>
+                        <ion-item menu-close href="#/">
+                            Mapa - Saídas
                         </ion-item>
                         <ion-item menu-close href="#/login">
                             Login
@@ -37,16 +44,8 @@
                     </ion-list>
                 </ion-content>
             </ion-side-menu>
-        </ion-side-menus>-->
-
-    </header>
-    <ion-content class="has-header has-footer">
-        <section>
-            <div ng-view>
-
-            </div>
+        </ion-side-menus>
         </section>
-    </ion-content>
     <footer>
         <ion-tabs class="tabs-positive tabs-icon-top">
 
@@ -54,7 +53,7 @@
 
             </ion-tab>
 
-            <ion-tab href="#/listar" title="Listar" icon-on="icon ion-person-stalker" icon-off="icon ion-person-stalker">
+            <ion-tab href="#/surdo/listar" title="Listar" icon-on="icon ion-person-stalker" icon-off="icon ion-person-stalker">
 
             </ion-tab>
 
@@ -75,7 +74,9 @@
     <script src="application/controllers/homeController.js"></script>
     <script src="application/controllers/surdoController.js"></script>
     <script src="application/controllers/loginController.js"></script>
+    <script src="application/controllers/territorioController.js"></script>
     <!-- SERVICES -->
-    <!--<script src="application/services/surdoService.js"></script>-->
+    <script src="application/services/surdoService.js"></script>
+     <script src="application/services/territorioService.js"></script>
 </body>
 </html>
