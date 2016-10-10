@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Web;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
 {
@@ -21,7 +22,8 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         {
             ViewBag.SelectLetras = new SelectList(_letraRest.GetLista("Letra"), "ID", "Letra", "Selecione...");
             ViewBag.SelectSaidas = new SelectList(_saidaRest.GetLista("Saida"), "ID", "Local", "Selecione...");
-            ViewBag.SelectTerritorios = new SelectList(_territorioRest.GetLista("Territorio"), "ID", "Nome", "Selecione...");
+            //ViewBag.SelectTerritorios = new SelectList(_territorioRest.GetLista("Territorio"), "ID", "Nome", "Selecione...");
+            ViewBag.SelectTerritorios = new SelectList(new List<TerritorioViewModel>(), "ID", "Nome", "Selecione...");
         }
         //private void CarregarEstadosCidades()
         //{

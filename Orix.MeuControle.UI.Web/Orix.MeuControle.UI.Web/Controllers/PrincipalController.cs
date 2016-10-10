@@ -7,6 +7,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
         // GET: Principal
         public ActionResult Index()
         {
+            //return Session["Token"] != null ? Redirect("ControleMapas/Home") : Redirect("Conta/Login");
             return Redirect("ControleMapas/Home");
         }
     }

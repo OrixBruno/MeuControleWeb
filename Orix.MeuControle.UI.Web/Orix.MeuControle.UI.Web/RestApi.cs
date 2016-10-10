@@ -9,21 +9,34 @@ namespace Orix.MeuControle.UI.Web
     public class RestApi<TClasse>
     {
         private RestClient _cliente;
-        private const String URL_BASE = "http://www.apiprojetos.somee.com/api/v1/";
-        // http://weblogs.asp.net/andrebaltieri/implementando-bearer-autentication-com-webapi-e-owin CONTINUACAO
+        public String Token { get; set; }
+        private const String URL_BASE = "http://localhost:81/api/v1/";
+        private const String API_BASE = "http://localhost:81/";
         //METODOS DE REQUEST
         //GET --------------->>>>>>
         public TClasse GetObjeto(String action)
         {
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(Method.GET);
-            return JsonConvert.DeserializeObject<TClasse>(_cliente.Execute(request).Content);
+            request.AddHeader("Authorization", "Bearer " + Token);
+            var response = _cliente.Execute(request);
+
+            if (response.StatusCode.ToString() == "200")
+                return JsonConvert.DeserializeObject<TClasse>(response.Content);
+
+            throw new Exception(response.Content);
         }
         public List<TClasse> GetLista(String action)
         {
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(Method.GET);
-            return JsonConvert.DeserializeObject<List<TClasse>>(_cliente.Execute(request).Content);
+            request.AddHeader("Authorization", "Bearer "+Token);
+            var response = _cliente.Execute(request);
+
+            if (response.StatusCode.ToString() == "200")
+                return JsonConvert.DeserializeObject<List<TClasse>>(response.Content);
+
+            throw new Exception(response.Content);
         }
         //POST, PUT, DELETE
         public virtual String Request(TClasse objeto, Method metodo, String action)
@@ -31,7 +44,25 @@ namespace Orix.MeuControle.UI.Web
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(metodo);
             request.AddJsonBody(objeto);
-            return _cliente.Execute(request).Content;
+            request.AddHeader("Authorization", "Bearer " + Token);
+            var response = _cliente.Execute(request);
+
+            if (response.StatusCode.ToString() == "200")
+                return response.Content;
+
+            throw new Exception(response.Content);
+        }
+        public virtual String RequestToken(TClasse objeto, Method metodo, String action)
+        {
+            _cliente = new RestClient(API_BASE + action);
+            var request = new RestRequest(metodo);
+            request.AddJsonBody(objeto);
+            var response = _cliente.Execute(request);
+
+            if (response.StatusCode.ToString() == "200")
+                return response.Content;
+
+            throw new Exception(response.Content);
         }
     }
 }
