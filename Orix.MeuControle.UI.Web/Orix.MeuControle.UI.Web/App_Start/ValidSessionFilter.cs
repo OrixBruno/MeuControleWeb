@@ -7,12 +7,13 @@ namespace Orix.MeuControle.UI.Web.App_Start
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if(filterContext.HttpContext.Session["Token"] == null && 
+            if (filterContext.HttpContext.Session["Token"] == null &&
                 filterContext.RouteData.Values["controller"].ToString() != "Conta" &&
                 filterContext.RouteData.Values["action"].ToString() != "Login")
             {
                 var routes = new RouteValueDictionary
-                    { 
+                    {
+                        { "area",""},
                         { "controller", "Conta" },
                         { "action", "Login" }
                     };

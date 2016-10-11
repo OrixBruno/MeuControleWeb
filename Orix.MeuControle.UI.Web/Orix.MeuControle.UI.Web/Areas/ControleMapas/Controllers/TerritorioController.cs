@@ -34,6 +34,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Territorio/Lista
         public ActionResult Lista()
         {
+            _territorioRest.Token = HttpContext.Session["Token"].ToString();
             return PartialView("_PartialLista", _territorioRest.GetLista("Territorio"));
         }
         // GET: ControleMapas/Territorio/Editar/5

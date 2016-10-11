@@ -17,15 +17,25 @@ namespace Orix.MeuControle.UI.Web.Controllers
         {
             return View();
         }
-        public ActionResult Login(String url)
-        {
-            return View();
-        }
+        
         [HttpPost]
         public ActionResult Login(ContaViewModel contaTela)
         {
-           var responseToken = _restFull.RequestToken(new AuthorizationViewModel() { password = contaTela.Senha, username = contaTela.Usuario }, Method.POST, "Token");
-            return Redirect("");            
+            try
+            {
+                var responseToken = _restFull.RequestToken(new AuthorizationViewModel() {grant_type= "password", password = contaTela.Senha, username = contaTela.Usuario }, Method.POST, "Token");
+                HttpContext.Session["Token"] = responseToken.token_type + " " + responseToken.access_token;
+
+                return Redirect("/Principal/Index");
+            }
+            catch (Exception ex)
+            {
+                return View();
+                throw;
+            }
+            
+
+                   
         }
     }
 }
