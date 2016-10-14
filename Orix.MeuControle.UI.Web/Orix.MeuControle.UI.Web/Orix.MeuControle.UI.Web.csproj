@@ -263,6 +263,7 @@
     <Compile Include="Areas\ControleMapas\Controllers\TerritorioController.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\LetraViewModel.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\MapaViewModel.cs" />
+    <Compile Include="Areas\ControleMapas\ViewModels\PessoaViewModel.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\SaidaViewModel.cs" />
     <Compile Include="Areas\ControleMapas\ViewModels\TerritorioViewModel.cs" />
     <Compile Include="Controllers\ContaController.cs" />

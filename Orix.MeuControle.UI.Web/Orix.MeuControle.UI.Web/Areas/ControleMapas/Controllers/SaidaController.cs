@@ -10,6 +10,8 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
     public class SaidaController : Controller
     {
         RestApi<SaidaViewModel> _saidaRest = new RestApi<SaidaViewModel>();
+
+        #region GET
         // GET: ControleMapas/Saida
         public ActionResult Index()
         {
@@ -21,44 +23,94 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         {
             return PartialView("_PartialSaidaAdicionar");
         }
-
-        // POST: ControleMapas/Saida/Adicionar
-        [HttpPost]
-        public ActionResult Adicionar(SaidaViewModel saidaTela)
-        {
-
-            ViewBag.Status = "success";
-            ViewBag.Message = "Saída cadastrada com sucesso!" + _saidaRest.Request(saidaTela, Method.POST, "Saida");
-            return PartialView("_PartialAlerta");
-        }
         // GET: ControleMapas/Saida/Lista
         public ActionResult Lista()
         {
-            return PartialView("_PartialLista", _saidaRest.GetLista("Saida"));
+            try
+            {
+                return PartialView("_PartialLista", _saidaRest.GetLista("Saida"));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         // GET: ControleMapas/Saida/Editar/5
         public ActionResult Editar(int id)
         {
-            TempData.Add("Action", "Editar");
-            return PartialView("_PartialSaidaAdicionar", _saidaRest.GetObjeto("Saida/" + id));
+            try
+            {
+                TempData.Add("Action", "Editar");
+                return PartialView("_PartialSaidaAdicionar", _saidaRest.GetObjeto("Saida/" + id));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
+
+        // GET: ControleMapas/Saida/Excluir/5
+        public ActionResult Excluir(int id)
+        {
+            try
+            {
+                _saidaRest.Request(null, Method.DELETE, "Saida/" + id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Saída excluida com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
+        #endregion
+        #region POST
+        // POST: ControleMapas/Saida/Adicionar
+        [HttpPost]
+        public ActionResult Adicionar(SaidaViewModel saidaTela)
+        {
+            try
+            {
+                _saidaRest.Request(saidaTela, Method.POST, "Saida");
+                ViewBag.Status = "success";
+                ViewBag.Message = "Saída cadastrada com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+
         }
 
         // POST: ControleMapas/Saida/Editar/5
         [HttpPost]
         public ActionResult Editar(SaidaViewModel saidaTela)
         {
-            ViewBag.Status = "success";
-            ViewBag.Message = "Saída atualizada com sucesso!" + _saidaRest.Request(saidaTela, Method.PUT, "Saida");
-            return PartialView("_PartialAlerta");
-        }
+            try
+            {
+                _saidaRest.Request(saidaTela, Method.PUT, "Saida");
+                ViewBag.Status = "success";
+                ViewBag.Message = "Saída atualizada com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
 
-        // GET: ControleMapas/Saida/Excluir/5
-        public ActionResult Excluir(int id)
-        {
-
-            ViewBag.Status = "success";
-            ViewBag.Message = "Saída excluida com sucesso!" + _saidaRest.Request(null, Method.DELETE, "Saida/" + id);
-            return PartialView("_PartialAlerta");
         }
+        #endregion
     }
 }

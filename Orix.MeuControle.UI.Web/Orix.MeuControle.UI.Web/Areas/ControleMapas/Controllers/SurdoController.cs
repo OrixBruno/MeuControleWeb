@@ -15,6 +15,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
     public class SurdoController : Controller
     {
         RestApi<SurdoViewModel> _restSurdo = new RestApi<SurdoViewModel>();
+
         #region METODOS
         private void ListaGeneros()
         {
@@ -51,9 +52,19 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpGet]
         public ActionResult Excluir(Int32 id)
         {
-            ViewBag.Status = "success";
-            ViewBag.Message = "Surdo excluido com sucesso!" + _restSurdo.Request(null, Method.DELETE, "Surdo/" + id);
-            return PartialView("_PartialAlerta");
+            try
+            {
+                _restSurdo.Request(null, Method.DELETE, "Surdo/" + id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Surdo excluido com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         // GET: ControleMapas/Surdo/Adicionar
         public ActionResult Adicionar()
@@ -70,14 +81,33 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Surdo/ObterListaSurdos
         public ActionResult ObterListaSurdos()
         {
-            return PartialView("_PartialSurdoLista", _restSurdo.GetLista("Surdo"));
+            try
+            {
+                return PartialView("_PartialSurdoLista", _restSurdo.GetLista("Surdo"));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+
         }
 
         // GET: ControleMapas/Surdo/Editar
         public ActionResult Editar(Int32 id)
         {
             ListaGeneros();
-            return View(_restSurdo.GetObjeto("Surdo"));
+            try
+            {
+                return View(_restSurdo.GetObjeto("Surdo"));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         #endregion
 
@@ -85,16 +115,36 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpPost]
         public ActionResult Adicionar(SurdoViewModel dadoTela)
         {
-            ViewBag.Status = "success";
-            ViewBag.Message = "Surdo cadastrado com sucesso!" + _restSurdo.Request(dadoTela, Method.POST, "Surdo");
-            return PartialView("_PartialAlerta");
+            try
+            {
+                _restSurdo.Request(dadoTela, Method.POST, "Surdo");
+                ViewBag.Status = "success";
+                ViewBag.Message = "Surdo cadastrado com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         [HttpPost]
         public ActionResult Editar(SurdoViewModel dadoTela)
         {
-            ViewBag.Message = "Surdo atualizado com sucesso!" + _restSurdo.Request(dadoTela, Method.PUT, "Surdo");
-            ViewBag.Status = "success";
-            return PartialView("_PartialAlerta");
+            try
+            {
+                _restSurdo.Request(dadoTela, Method.PUT, "Surdo");
+                ViewBag.Message = "Surdo atualizado com sucesso!";
+                ViewBag.Status = "success";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         #endregion
     }

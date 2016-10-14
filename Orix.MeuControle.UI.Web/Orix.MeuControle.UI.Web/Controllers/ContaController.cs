@@ -24,7 +24,7 @@ namespace Orix.MeuControle.UI.Web.Controllers
             try
             {
                 var responseToken = _restFull.RequestToken(new AuthorizationViewModel() {grant_type= "password", password = contaTela.Senha, username = contaTela.Usuario }, Method.POST, "Token");
-                HttpContext.Session["Token"] = responseToken.token_type + " " + responseToken.access_token;
+               Token.setToken(responseToken.token_type + " " + responseToken.access_token);
 
                 return Redirect("/Principal/Index");
             }

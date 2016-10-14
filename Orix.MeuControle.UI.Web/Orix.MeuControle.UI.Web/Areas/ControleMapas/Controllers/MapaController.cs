@@ -23,7 +23,6 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
             ViewBag.SelectLetras = new SelectList(_letraRest.GetLista("Letra"), "ID", "Letra", "Selecione...");
             ViewBag.SelectSaidas = new SelectList(_saidaRest.GetLista("Saida"), "ID", "Local", "Selecione...");
             ViewBag.SelectTerritorios = new SelectList(_territorioRest.GetLista("Territorio"), "ID", "Nome", "Selecione...");
-            ViewBag.SelectTerritorios = new SelectList(new List<TerritorioViewModel>(), "ID", "Nome", "Selecione...");
         }
         //private void CarregarEstadosCidades()
         //{
@@ -53,7 +52,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         }
         public ActionResult Excluir(Int32 id)
         {
-            ViewBag.Message = "Mapa excluido com sucesso!" + _mapaRest.Request(null,Method.DELETE, "Mapa/" + id);
+            ViewBag.Message = "Mapa excluido com sucesso!" + _mapaRest.Request(null, Method.DELETE, "Mapa/" + id);
             ViewBag.Status = "success";
 
             return PartialView("_PartialAlerta");
@@ -65,7 +64,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         public ActionResult Adicionar(MapaViewModel mapaTela)
         {
             ViewBag.Status = "success";
-            ViewBag.Message = "Mapa cadastrado com sucesso!" + _mapaRest.Request(mapaTela,Method.POST,"Mapa");
+            ViewBag.Message = "Mapa cadastrado com sucesso!" + _mapaRest.Request(mapaTela, Method.POST, "Mapa");
             return PartialView("_PartialAlerta");
         }
         [HttpPost]
@@ -79,10 +78,10 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         [HttpPost]
         public ActionResult Editar(MapaViewModel mapaTela)
         {
-                _mapaRest.Request(mapaTela,Method.PUT, "Mapa");
-                ViewBag.Status = "success";
-                ViewBag.Message = "Mapa atualizado com sucesso!";
-                return PartialView("_PartialAlerta");
+            _mapaRest.Request(mapaTela, Method.PUT, "Mapa");
+            ViewBag.Status = "success";
+            ViewBag.Message = "Mapa atualizado com sucesso!";
+            return PartialView("_PartialAlerta");
         }
         #endregion
 

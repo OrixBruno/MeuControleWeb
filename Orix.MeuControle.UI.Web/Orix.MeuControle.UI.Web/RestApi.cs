@@ -8,20 +8,31 @@ using System.Web;
 
 namespace Orix.MeuControle.UI.Web
 {
+    public static class Token
+    { 
+        public static void setToken(String token)
+        {
+            HttpContext.Current.Session["Token"] = token;
+        }
+        public static String getToken()
+        {
+            return HttpContext.Current.Session["Token"].ToString();
+        }
+    }
+
     public class RestApi<TClasse>
     {
         private RestClient _cliente;
-        public String Token;
         private const String URL_BASE = "http://localhost:81/api/v1/";
         private const String API_BASE = "http://localhost:81/";
-
+ 
         //METODOS DE REQUEST
         //GET --------------->>>>>>
         public TClasse GetObjeto(String action)
         {
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", Token);
+            request.AddHeader("Authorization",Token.getToken());
             var response = _cliente.Execute(request);
 
             if (response.StatusCode.ToString() == "OK")
@@ -33,7 +44,7 @@ namespace Orix.MeuControle.UI.Web
         {
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", Token);
+            request.AddHeader("Authorization", Token.getToken());
             var response = _cliente.Execute(request);
 
             if (response.StatusCode.ToString() == "OK")
@@ -42,16 +53,16 @@ namespace Orix.MeuControle.UI.Web
             throw new Exception(response.Content);
         }
         //POST, PUT, DELETE
-        public virtual String Request(TClasse objeto, Method metodo, String action)
+        public virtual IRestResponse Request(TClasse objeto, Method metodo, String action)
         {
             _cliente = new RestClient(URL_BASE + action);
             var request = new RestRequest(metodo);
             request.AddJsonBody(objeto);
-            request.AddHeader("Authorization", Token);
+            request.AddHeader("Authorization", Token.getToken());
             var response = _cliente.Execute(request);
 
             if (response.StatusCode.ToString() == "OK")
-                return response.Content;
+                return response;
 
             throw new Exception(response.Content);
         }

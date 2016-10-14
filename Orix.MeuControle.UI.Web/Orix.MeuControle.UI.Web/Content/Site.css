@@ -53,3 +53,6 @@ input[type="checkbox"].input-validation-error {
 .hr-cinza-2px{
     border-top: 2px solid #666e71 !important;
 }
+.display-none {
+    display:none;
+}

@@ -11,7 +11,7 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
     public class LetraController : Controller
     {
         RestApi<LetraViewModel> _restfull = new RestApi<LetraViewModel>();
-
+        #region GET
         // GET: ControleMapas/Letra/Adicionar
         public ActionResult Adicionar()
         {
@@ -21,42 +21,90 @@ namespace Orix.MeuControle.UI.Web.Areas.ControleMapas.Controllers
         // GET: ControleMapas/Letra/Editar/1
         public ActionResult Editar(int id)
         {
-            TempData.Add("Action", "Editar");
-            return PartialView("_PartialLetraAdicionar", _restfull.GetObjeto("Letra/" + id));
-        }
-        // POST: ControleMapas/Letra/Editar
-        [HttpPost]
-        public ActionResult Editar(LetraViewModel letraTela)
-        {
-            ViewBag.Status = "success";
-            ViewBag.Message = "Letra atualizada com sucesso! \n" + _restfull.Request(letraTela,Method.PUT, "Letra");
-            return PartialView("_PartialAlerta");
-
-            //ViewBag.Message = ex.Message;
-            //ViewBag.Status = "danger";
-            //return PartialView("_PartialAlerta");
-
-        }
-        // POST: ControleMapas/Letra/Adicionar
-        [HttpPost]
-        public ActionResult Adicionar(LetraViewModel letraTela)
-        {
-            ViewBag.Message = _restfull.Request(letraTela, Method.POST, "Letra");
-            ViewBag.Status = "success";
-            return PartialView("_PartialAlerta");
+            try
+            {
+                TempData.Add("Action", "Editar");
+                return PartialView("_PartialLetraAdicionar", _restfull.GetObjeto("Letra/" + id));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
         // GET: ControleMapas/Letra/Lista
         public ActionResult Lista()
         {
-            return PartialView("_PartialLista", _restfull.GetLista("Letra"));
+            try
+            {
+                return PartialView("_PartialLista", _restfull.GetLista("Letra"));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
         }
 
         // GET: ControleMapas/Letra/Excluir/5
         public ActionResult Excluir(Int32 id)
         {
-            ViewBag.Status = "success";
-            ViewBag.Message = "Letra excluido com sucesso!"+ _restfull.Request(null,Method.DELETE, "Letra/" + id);
-            return PartialView("_PartialAlerta");
+            try
+            {
+                _restfull.Request(null, Method.DELETE, "Letra/" + id);
+                ViewBag.Status = "success";
+                ViewBag.Message = "Letra excluida com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+
         }
+        #endregion
+        #region POST
+        // POST: ControleMapas/Letra/Editar
+        [HttpPost]
+        public ActionResult Editar(LetraViewModel letraTela)
+        {
+            try
+            {
+                var response = _restfull.Request(letraTela, Method.PUT, "Letra");
+                ViewBag.Status = "success";
+                ViewBag.Message = "Letra atualizada com sucesso!";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+        }
+        // POST: ControleMapas/Letra/Adicionar
+        [HttpPost]
+        public ActionResult Adicionar(LetraViewModel letraTela)
+        {
+            try
+            {
+                _restfull.Request(letraTela, Method.POST, "Letra");
+                ViewBag.Message = "Letra adicionada com sucesso!" ;
+                ViewBag.Status = "success";
+                return PartialView("_PartialAlerta");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                ViewBag.Status = "danger";
+                return PartialView("_PartialAlerta");
+            }
+
+        }
+        #endregion
     }
 }
